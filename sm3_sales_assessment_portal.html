@@ -1,0 +1,665 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stealth Mode Three — Sales Readiness Assessment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F3FB; --bg2:#ECEAF8; --card:#FFFFFF;
+  --ink:#1B1A2E; --muted:#6B6A82; --faint:#A6A4BC;
+  --brand:#6C63FF; --brand-bright:#8B82FF; --brand-deep:#4A42C7; --brand-soft:#EEEBFF;
+  --line:#E7E5F2; --line2:#D7D4EA;
+  --pass:#1E9E6A; --pass-soft:#E3F6EE; --maybe:#C68A1E; --maybe-soft:#FBF1DC; --fail:#D63B57; --fail-soft:#FBE6EA;
+  --disp:'Space Grotesk',system-ui,sans-serif; --body:'Inter',system-ui,sans-serif; --mono:'Space Mono',ui-monospace,monospace;
+  --sh:0 18px 44px -28px rgba(40,30,90,.35);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;line-height:1.5}
+body{background:
+  radial-gradient(1100px 540px at 88% -8%, rgba(108,99,255,.10), transparent 60%),
+  radial-gradient(820px 460px at -8% 108%, rgba(139,130,255,.10), transparent 55%),
+  var(--bg);min-height:100vh}
+a{color:var(--brand-deep);text-decoration:none}
+button{font-family:var(--body);cursor:pointer}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:6px}
+.wrap{max-width:880px;margin:0 auto;padding:26px 22px 80px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}
+.logo-badge{background:#0B0B14;border-radius:12px;padding:9px 14px;display:inline-flex;box-shadow:var(--sh)}
+.logo{height:30px;width:auto;display:block}
+.navbtn{font-family:var(--mono);font-size:12px;color:var(--muted);border:1px solid var(--line2);
+  padding:8px 13px;border-radius:9px;background:var(--card)}
+.navbtn:hover{color:var(--ink);border-color:var(--brand);background:var(--brand-soft)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--brand-deep)}
+h1{font-family:var(--disp);font-weight:700;font-size:clamp(29px,5.2vw,44px);line-height:1.05;letter-spacing:-.01em;margin:.3em 0 .25em}
+h2{font-family:var(--disp);font-weight:600;font-size:clamp(20px,3.3vw,26px);letter-spacing:-.01em;margin:0 0 6px}
+h3{font-family:var(--disp);font-weight:600;font-size:15px;margin:0 0 4px}
+p{color:#3E3D55}
+.lead{color:var(--muted);font-size:17px;max-width:62ch}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:var(--sh)}
+.card+.card{margin-top:18px}
+.screen{display:none;animation:rise .4s cubic-bezier(.2,.7,.2,1)}
+.screen.active{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.screen{animation:none}}
+
+.rail{display:flex;align-items:center;gap:6px;margin:0 0 22px;flex-wrap:wrap}
+.chev{display:flex;align-items:center;gap:5px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.chev svg{width:14px;height:14px}
+.chev .glyph path{fill:var(--faint)}
+.chev.done .glyph path{fill:var(--brand)} .chev.active .glyph path{fill:var(--brand-deep)}
+.chev.done,.chev.active{color:var(--ink)}
+.chev .bar{width:18px;height:2px;background:var(--line2);border-radius:2px}
+.chev.done .bar{background:var(--brand)}
+
+.field{margin:16px 0}
+label.lab{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+input[type=text],input[type=email],input[type=password],textarea,select{width:100%;background:#FBFBFE;border:1px solid var(--line2);color:var(--ink);border-radius:11px;padding:13px 14px;font-family:var(--body);font-size:15px;resize:vertical}
+textarea{min-height:120px;line-height:1.55}
+input:focus,textarea:focus,select:focus{border-color:var(--brand);outline:none;background:#fff}
+.opts{display:grid;gap:8px}
+.opt{display:flex;align-items:center;gap:10px;background:#FBFBFE;border:1px solid var(--line2);border-radius:11px;padding:11px 13px;font-size:14px;color:#3E3D55}
+.opt input{accent-color:var(--brand);width:16px;height:16px}
+.row{display:flex;gap:12px;flex-wrap:wrap}.row>*{flex:1;min-width:220px}
+
+.btn{display:inline-flex;align-items:center;gap:9px;background:var(--brand);color:#fff;border:none;padding:14px 22px;border-radius:12px;font-weight:600;font-size:15px;font-family:var(--disp);transition:transform .12s,background .15s,box-shadow .15s;box-shadow:0 10px 22px -12px rgba(108,99,255,.8)}
+.btn:hover{background:var(--brand-bright);transform:translateY(-1px)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+.btn.ghost{background:#fff;border:1px solid var(--line2);color:var(--ink);box-shadow:none}
+.btn.ghost:hover{border-color:var(--brand);background:var(--brand-soft)}
+.btn.sm{padding:10px 15px;font-size:13px}
+.actions{display:flex;gap:12px;align-items:center;margin-top:24px;flex-wrap:wrap}
+.spacer{flex:1}
+.note{font-size:13px;color:var(--muted)}
+.callout{border-left:3px solid var(--brand);background:var(--brand-soft);padding:12px 14px;border-radius:0 11px 11px 0;font-size:13.5px;color:#3a3760;margin:14px 0}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--brand-deep);background:var(--brand-soft);padding:4px 9px;border-radius:7px;display:inline-block}
+.msg{font-size:13px;margin-top:10px;min-height:18px}
+.msg.err{color:var(--fail)} .msg.ok{color:var(--pass)}
+.warnbox{border:1px solid var(--maybe);background:var(--maybe-soft);border-radius:11px;padding:12px 14px;font-size:13px;color:#7a5a14;margin:14px 0}
+
+.media-stage{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
+.media-stage>div{flex:1;min-width:260px}
+.video-box{aspect-ratio:4/3;background:#0B0B14;border:1px solid var(--line2);border-radius:14px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
+.video-box video{width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
+.video-box .ph{color:#9b99b6;font-family:var(--mono);font-size:12px;text-align:center;padding:18px}
+.rec-dot{position:absolute;top:10px;left:10px;display:none;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;color:#fff;background:rgba(0,0,0,.5);padding:4px 9px;border-radius:20px}
+.rec-dot.on{display:flex}
+.rec-dot .d{width:8px;height:8px;border-radius:50%;background:#ff5d73;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:.25}}
+.meter{height:6px;background:#EDEBF7;border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-top:8px}
+.meter>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--brand-bright))}
+.box{background:#FBFBFE;border:1px solid var(--line2);border-radius:12px;padding:14px;min-height:150px;font-size:14px;color:#3E3D55;white-space:pre-wrap}
+.box .interim{color:var(--faint)} .box .ph{color:var(--faint)}
+.prompt-card{background:var(--brand-soft);border:1px solid #ddd8ff;border-radius:13px;padding:16px 18px;margin:14px 0}
+.prompt-card .q{font-size:16px;color:#2c2a47;margin:0}
+.script{font-family:var(--mono);font-size:13.5px;line-height:1.7;color:#3a3760;background:#fff;border:1px solid #e3dfff;border-radius:10px;padding:14px;margin-top:10px}
+
+.chat{display:flex;flex-direction:column;gap:12px;max-height:46vh;overflow-y:auto;padding:4px 2px}
+.bubble{max-width:82%;padding:11px 14px;border-radius:15px;font-size:14.5px;line-height:1.5}
+.bubble.cust{align-self:flex-start;background:var(--bg2);border:1px solid var(--line);border-bottom-left-radius:5px;color:#2c2a47}
+.bubble.rep{align-self:flex-end;background:linear-gradient(180deg,var(--brand),var(--brand-deep));color:#fff;border-bottom-right-radius:5px}
+.who{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin:0 4px 4px}
+.who.rep{text-align:right}
+.typing{font-family:var(--mono);font-size:12px;color:var(--muted);padding:4px}
+.composer{display:flex;gap:10px;margin-top:14px;align-items:flex-end}
+.composer textarea{min-height:54px}
+.turncount{font-family:var(--mono);font-size:11px;color:var(--faint)}
+
+.verdict{display:flex;align-items:center;gap:18px;flex-wrap:wrap;border-radius:14px;padding:20px;border:1px solid var(--line2);background:#FBFBFE;margin-bottom:18px}
+.verdict .big{font-family:var(--disp);font-weight:700;font-size:28px}
+.score-ring{width:96px;height:96px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center}
+.score-ring .inner{width:74px;height:74px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-ring b{font-family:var(--disp);font-size:24px}
+.score-ring span{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.1em}
+.metric{margin:14px 0}
+.metric .head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.metric .head b{font-family:var(--disp);font-size:15px}
+.metric .head .v{font-family:var(--mono);font-size:13px;color:var(--brand-deep)}
+.metric .track{height:9px;background:#EDEBF7;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+.metric .track>i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,var(--brand-deep),var(--brand-bright));transition:width .8s ease}
+.metric small{color:var(--muted);font-size:12.5px;display:block;margin-top:6px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+@media(max-width:640px){.cols{grid-template-columns:1fr}}
+.list{margin:6px 0 0;padding-left:18px}.list li{margin:4px 0;font-size:13.5px;color:#3E3D55}
+
+.cand{border:1px solid var(--line);border-radius:13px;padding:14px 16px;margin:10px 0;background:#FBFBFE}
+.cand .top{display:flex;justify-content:space-between;align-items:center;gap:12px;cursor:pointer}
+.cand .name{font-family:var(--disp);font-weight:600;font-size:16px}
+.cand .meta{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.pill{font-family:var(--mono);font-size:11px;padding:5px 10px;border-radius:20px;font-weight:700}
+.pill.pass{background:var(--pass-soft);color:var(--pass)} .pill.maybe{background:var(--maybe-soft);color:var(--maybe)} .pill.fail{background:var(--fail-soft);color:var(--fail)}
+.cand .detail{display:none;margin-top:14px;border-top:1px solid var(--line);padding-top:14px}
+.cand.open .detail{display:block}
+.kv{font-size:13px;color:#3E3D55;margin:9px 0}.kv b{color:var(--ink);font-family:var(--disp)}
+.mono-block{font-family:var(--mono);font-size:12px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px;white-space:pre-wrap;margin-top:6px;max-height:200px;overflow:auto}
+.audio-slot audio{width:100%;margin-top:8px}
+.spin{width:18px;height:18px;border:2px solid rgba(108,99,255,.25);border-top-color:var(--brand);border-radius:50%;display:inline-block;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.center{text-align:center}
+hr.sep{border:none;border-top:1px solid var(--line);margin:22px 0}
+.copybar{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.copybar input{flex:1;min-width:240px}
+</style>
+
+<div class="wrap">
+  <div class="topbar">
+    <div class="logo-badge"><img class="logo" alt="Stealth Mode Three" src="data:image/jpeg;base64,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"></div>
+    <button class="navbtn" id="recBtn">Recruiter access</button>
+  </div>
+
+  <!-- WELCOME -->
+  <section class="screen active" id="s-welcome">
+    <div class="rail"></div>
+    <div class="card">
+      <span class="eyebrow">Remote Sales &amp; Customer Support · Phone-first</span>
+      <h1>Sales readiness assessment</h1>
+      <p class="lead">This short assessment puts you in the seat — a live customer call, real objections, and the moment that matters: asking for the order. It takes about 15–20 minutes.</p>
+      <div class="callout"><b>You'll need a working microphone and camera.</b> Two stages are spoken, so we can hear how you sound on a real call. Find a quiet spot, then begin.</div>
+      <div class="actions">
+        <button class="btn" id="beginBtn">Begin assessment ›</button>
+        <span class="note">Best experience in Chrome or Safari, opened in its own browser tab.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section class="screen" id="s-details">
+    <div class="rail"></div>
+    <div class="card">
+      <span class="eyebrow">Stage 1 · About you</span>
+      <h2>Eligibility &amp; basics</h2>
+      <p class="note">The role runs on US business hours, 6 days a week (9-hour shifts, one day off Sat or Sun).</p>
+      <div class="row">
+        <div class="field"><label class="lab" for="cName">Full name</label><input id="cName" type="text" placeholder="Jordan Rivera"></div>
+        <div class="field"><label class="lab" for="cEmail">Email</label><input id="cEmail" type="email" placeholder="you@email.com"></div>
+      </div>
+      <div class="field"><label class="lab" for="cExp">Years of phone sales / telesales / call-center experience</label>
+        <select id="cExp"><option value="">Select…</option><option>None</option><option>Less than 1 year</option><option>1–2 years</option><option>3–5 years</option><option>5+ years</option></select></div>
+      <div class="field"><label class="lab">Confirm you can meet the working conditions</label>
+        <div class="opts">
+          <label class="opt"><input type="checkbox" class="elig"> I can work US business hours, 6 days/week</label>
+          <label class="opt"><input type="checkbox" class="elig"> I have a reliable internet connection and a quiet workspace</label>
+          <label class="opt"><input type="checkbox" class="elig"> I'm comfortable speaking with customers in English by phone</label>
+          <label class="opt"><input type="checkbox" class="elig"> I have closed sales or hit sales targets before</label>
+        </div>
+      </div>
+      <div class="msg err" id="detailsMsg"></div>
+      <div class="actions"><button class="btn ghost" data-back>‹ Back</button><div class="spacer"></div><button class="btn" id="detailsNext">Continue ›</button></div>
+    </div>
+  </section>
+
+  <!-- SPEAKING -->
+  <section class="screen" id="s-speaking">
+    <div class="rail"></div>
+    <div class="card">
+      <span class="eyebrow">Stage 2 · Spoken tasks</span>
+      <h2>Let's hear you on the line</h2>
+      <p class="note">Record each answer with your mic. We capture a transcript and your audio so the team can hear how clearly a customer would understand you.</p>
+      <div class="warnbox" id="micWarn" style="display:none"></div>
+
+      <div class="prompt-card">
+        <span class="tag" id="spkTag">Task 1 of 2</span>
+        <p class="q" id="spkQ" style="margin-top:8px"></p>
+        <div class="script" id="spkScript" style="display:none"></div>
+      </div>
+
+      <div class="media-stage">
+        <div>
+          <div class="video-box">
+            <video id="preview" autoplay muted playsinline></video>
+            <div class="ph" id="vph">Enable your camera &amp; mic to start.</div>
+            <div class="rec-dot" id="recDot"><span class="d"></span> REC <span id="recTime">0:00</span></div>
+          </div>
+          <div class="meter"><i id="lvl"></i></div>
+          <div class="actions" style="margin-top:12px">
+            <button class="btn sm" id="startMedia">Enable camera &amp; mic</button>
+            <button class="btn sm ghost" id="recToggle" disabled>● Record</button>
+          </div>
+        </div>
+        <div>
+          <label class="lab">Live transcript</label>
+          <div class="box" id="tbox"><span class="ph">Your words appear here as you speak…</span></div>
+          <div class="note" id="recStatus" style="margin-top:8px"></div>
+        </div>
+      </div>
+      <div class="actions"><button class="btn ghost" data-back>‹ Back</button><div class="spacer"></div><button class="btn" id="spkNext" disabled>Record an answer to continue ›</button></div>
+    </div>
+  </section>
+
+  <!-- SIMULATION -->
+  <section class="screen" id="s-sim">
+    <div class="rail"></div>
+    <div class="card">
+      <span class="eyebrow">Stage 3 · Live sales role-play</span>
+      <h2>A customer is on the line</h2>
+      <p class="note">You're a Stealth Mode Three rep. A customer (played live) has called in. Greet them, find their need, recommend something, handle pushback — and <b>close the order</b>. About 6 exchanges.</p>
+      <div id="chat" class="chat"></div>
+      <div class="typing" id="typing" style="display:none">Customer is responding…</div>
+      <div class="composer">
+        <textarea id="repMsg" placeholder="Type your response to the customer…"></textarea>
+        <button class="btn" id="sendRep">Send</button>
+      </div>
+      <div class="actions" style="margin-top:12px">
+        <span class="turncount" id="turns">Exchange 0 / 6</span><div class="spacer"></div>
+        <button class="btn ghost" id="endSim" disabled>End call &amp; continue ›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- WRITTEN -->
+  <section class="screen" id="s-written">
+    <div class="rail"></div>
+    <div class="card">
+      <span class="eyebrow">Stage 4 · Written support</span>
+      <h2>Email &amp; chat handling</h2>
+      <p class="note">During quiet periods you'll handle email and live chat. Two quick ones.</p>
+      <div class="prompt-card"><span class="tag">Email reply</span>
+        <p class="q" style="margin-top:8px">A customer emails: <i>"Hi — I ordered last Tuesday and tracking still hasn't updated. I need this by Friday for a gift. Getting a bit worried. Can you help?"</i></p></div>
+      <textarea id="wEmail" placeholder="Write your email reply…"></textarea>
+      <div class="prompt-card" style="margin-top:18px"><span class="tag">Live chat — turn it into a sale</span>
+        <p class="q" style="margin-top:8px">Chat message: <i>"Just browsing, not sure your product is worth the price tbh."</i></p></div>
+      <textarea id="wChat" placeholder="Write your chat reply…"></textarea>
+      <div class="actions"><button class="btn ghost" data-back>‹ Back</button><div class="spacer"></div><button class="btn" id="submitAll">Submit for scoring ›</button></div>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section class="screen" id="s-result">
+    <div class="rail"></div>
+    <div class="card" id="scoringCard">
+      <div class="center" style="padding:36px 0">
+        <span class="spin"></span>
+        <h2 style="margin-top:16px">Scoring your assessment…</h2>
+        <p class="note" id="scoreStatus">Reviewing your call, your clarity, and your writing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DONE -->
+  <section class="screen" id="s-done">
+    <div class="card center" style="padding:40px 26px">
+      <span class="tag">Submitted</span>
+      <h1 style="margin-top:14px">Thank you — you're done.</h1>
+      <p class="lead" style="margin:0 auto">Your assessment has been recorded and sent to the Stealth Mode Three hiring team. If you're a fit, you'll hear about next steps.</p>
+    </div>
+  </section>
+
+  <!-- RECRUITER: LOGIN / SETUP -->
+  <section class="screen" id="s-login">
+    <div class="card" style="max-width:440px;margin:0 auto">
+      <span class="eyebrow" id="loginEyebrow">Recruiter access</span>
+      <h2 id="loginTitle" style="margin-top:6px">Sign in</h2>
+      <p class="note" id="loginSub"></p>
+      <div class="field" id="userWrap"><label class="lab" for="rUser">Username</label><input id="rUser" type="text" placeholder="recruiter" autocomplete="username"></div>
+      <div class="field"><label class="lab" for="rPass" id="passLab">Password</label><input id="rPass" type="password" autocomplete="current-password"></div>
+      <div class="field" id="pass2Wrap" style="display:none"><label class="lab" for="rPass2">Confirm password</label><input id="rPass2" type="password"></div>
+      <div class="msg err" id="loginMsg"></div>
+      <div class="actions"><button class="btn ghost" id="loginBack">‹ Candidate view</button><div class="spacer"></div><button class="btn" id="loginGo">Sign in</button></div>
+    </div>
+  </section>
+
+  <!-- RECRUITER: DASHBOARD -->
+  <section class="screen" id="s-recruiter">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div><span class="eyebrow">Recruiter dashboard</span><h2 style="margin-top:6px">Candidate results</h2></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn ghost sm" id="changePwBtn">Change password</button>
+          <button class="btn ghost sm" id="refreshBtn">↻ Refresh</button>
+          <button class="btn ghost sm" id="exitRec">Candidate view</button>
+        </div>
+      </div>
+
+      <hr class="sep">
+      <h3>Invite a candidate</h3>
+      <p class="note">Share this assessment link. Anyone who opens it lands on the candidate assessment; their results appear here automatically.</p>
+      <div class="copybar">
+        <input id="inviteLink" type="text" placeholder="Paste your published/hosted link here">
+        <button class="btn sm" id="copyInvite">Copy invite message</button>
+      </div>
+      <div class="msg ok" id="inviteMsg"></div>
+
+      <hr class="sep">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><h3>Results</h3><span class="note" id="candCount"></span></div>
+      <div id="candList"></div>
+    </div>
+  </section>
+
+  <!-- CHANGE PASSWORD -->
+  <section class="screen" id="s-changepw">
+    <div class="card" style="max-width:440px;margin:0 auto">
+      <span class="eyebrow">Account</span><h2 style="margin-top:6px">Change password</h2>
+      <div class="field"><label class="lab" for="curPw">Current password</label><input id="curPw" type="password"></div>
+      <div class="field"><label class="lab" for="newPw">New password</label><input id="newPw" type="password"></div>
+      <div class="field"><label class="lab" for="newPw2">Confirm new password</label><input id="newPw2" type="password"></div>
+      <div class="msg" id="pwMsg"></div>
+      <div class="actions"><button class="btn ghost" id="pwCancel">‹ Back</button><div class="spacer"></div><button class="btn" id="pwSave">Save password</button></div>
+    </div>
+  </section>
+</div>
+
+<script>
+const API="https://api.anthropic.com/v1/messages", MODEL="claude-sonnet-4-20250514";
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const state={id:"sm3_"+Date.now()+"_"+Math.random().toString(36).slice(2,7),
+  name:"",email:"",exp:"",eligibility:[],speaking:[],sim:[],written:{},scores:null,ts:Date.now()};
+let loggedIn=false;
+
+/* ---------- helpers (no alert/prompt — sandbox blocks them) ---------- */
+async function hash(s){
+  try{ if(crypto&&crypto.subtle){const d=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));
+    return [...new Uint8Array(d)].map(b=>b.toString(16).padStart(2,'0')).join('');}}catch(e){}
+  let h=2166136261; for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);} return 'fb'+(h>>>0).toString(16);
+}
+async function copyText(t){
+  try{await navigator.clipboard.writeText(t);return true;}catch(e){}
+  try{const ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();const ok=document.execCommand('copy');ta.remove();return ok;}catch(e){return false;}
+}
+async function callClaude(messages,system,maxTokens){
+  const body={model:MODEL,max_tokens:maxTokens||1000,messages};if(system)body.system=system;
+  const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+  const data=await r.json();
+  return (data.content||[]).map(b=>b.type==='text'?b.text:"").filter(Boolean).join("\n");
+}
+
+/* ---------- progress rail ---------- */
+const STAGES=["Welcome","About you","Spoken","Sales call","Written","Result"];
+const SCREENS=["s-welcome","s-details","s-speaking","s-sim","s-written","s-result"];
+let stageIdx=0;
+const chevSVG='<svg class="glyph" viewBox="0 0 24 24"><path d="M4 3l7 9-7 9h5l7-9-7-9z"/><path d="M11 3l7 9-7 9h5l7-9-7-9z" opacity=".55"/></svg>';
+function buildRail(){const html=STAGES.map((s,i)=>`<span class="chev">${chevSVG}<span>${s}</span></span>`+(i<STAGES.length-1?'<span class="bar"></span>':'')).join('');
+  $$('.rail').forEach(r=>r.innerHTML=html);paintRail();}
+function paintRail(){$$('.rail').forEach(r=>{[...r.querySelectorAll('.chev')].forEach((c,i)=>{c.classList.toggle('done',i<stageIdx);c.classList.toggle('active',i===stageIdx);});
+  [...r.querySelectorAll('.bar')].forEach((b,i)=>b.classList.toggle('done',i<stageIdx));});}
+function show(id){$$('.screen').forEach(s=>s.classList.remove('active'));$('#'+id).classList.add('active');
+  const i=SCREENS.indexOf(id);if(i>=0){stageIdx=i;paintRail();}window.scrollTo({top:0,behavior:'smooth'});}
+buildRail();
+
+/* ---------- navigation ---------- */
+$('#beginBtn').onclick=()=>show('s-details');
+$$('[data-back]').forEach(b=>b.onclick=()=>{const cur=SCREENS.indexOf($$('.screen').find(s=>s.classList.contains('active')).id);if(cur>0)show(SCREENS[cur-1]);});
+$('#detailsNext').onclick=()=>{
+  state.name=$('#cName').value.trim();state.email=$('#cEmail').value.trim();state.exp=$('#cExp').value;
+  state.eligibility=$$('.elig').map(c=>c.checked);
+  if(!state.name){$('#detailsMsg').textContent="Please enter your name.";return;}
+  $('#detailsMsg').textContent="";startSpeaking();
+};
+
+/* ---------- speaking stage (mandatory voice, no typing) ---------- */
+const SPK=[
+ {q:"Imagine you've just picked up the phone. Greet the customer and introduce yourself the way you would on a real Stealth Mode Three call. Keep it warm and natural (about 30 seconds).",script:null},
+ {q:"Now read this short product line aloud, clearly and at a natural pace:",
+  script:"\"Thanks for calling Stealth Mode Three. Our most popular package ships free within two days, comes with a thirty-day guarantee, and right now includes a complimentary upgrade. Would you like me to set that up for you today?\""}
+];
+let spkIdx=0,mediaStream=null,recog=null,recorder=null,recChunks=[],recTimer=null,recStart=0,finalText="",interimText="";
+const recorded={}; // spkIdx -> {audio:dataURL, transcript}
+
+function startSpeaking(){spkIdx=0;renderSpk();show('s-speaking');}
+function renderSpk(){
+  const t=SPK[spkIdx];
+  $('#spkTag').textContent=`Task ${spkIdx+1} of ${SPK.length}`;
+  $('#spkQ').textContent=t.q;
+  if(t.script){$('#spkScript').style.display='block';$('#spkScript').textContent=t.script;}else $('#spkScript').style.display='none';
+  finalText="";interimText="";paintTranscript();
+  const have=!!recorded[spkIdx];
+  $('#recStatus').textContent=have?"Saved. Re-record to replace it, or continue.":"";
+  updateSpkNext();
+}
+function updateSpkNext(){
+  const have=!!recorded[spkIdx];
+  $('#spkNext').disabled=!have;
+  $('#spkNext').textContent = have ? (spkIdx<SPK.length-1?'Next ›':'Continue ›') : 'Record an answer to continue ›';
+}
+function paintTranscript(){$('#tbox').innerHTML=(finalText||'')+'<span class="interim">'+(interimText||'')+'</span>'||'<span class="ph">Your words appear here as you speak…</span>';}
+
+$('#startMedia').onclick=async()=>{
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){return showMicWarn();}
+  try{
+    mediaStream=await navigator.mediaDevices.getUserMedia({video:true,audio:true});
+    $('#preview').srcObject=mediaStream;$('#vph').style.display='none';
+  }catch(e){
+    try{mediaStream=await navigator.mediaDevices.getUserMedia({audio:true});$('#vph').textContent="Mic on (no camera). That's fine — speak away.";}
+    catch(err){return showMicWarn();}
+  }
+  $('#recToggle').disabled=false;$('#startMedia').textContent='Mic ready';$('#startMedia').disabled=true;
+  $('#micWarn').style.display='none';setupMeter(mediaStream);
+};
+function showMicWarn(){
+  $('#micWarn').style.display='block';
+  $('#micWarn').innerHTML="This assessment needs a microphone. Your browser blocked access — this often happens inside an embedded preview. Please open the assessment <b>link in its own browser tab</b> (Chrome or Safari) and allow microphone access. This stage can't be completed by typing.";
+}
+function setupMeter(stream){try{const ac=new (window.AudioContext||window.webkitAudioContext)();const src=ac.createMediaStreamSource(stream),an=ac.createAnalyser();an.fftSize=256;src.connect(an);const data=new Uint8Array(an.frequencyBinCount);
+  (function loop(){an.getByteFrequencyData(data);const v=data.reduce((a,b)=>a+b,0)/data.length;$('#lvl').style.width=Math.min(100,v*1.6)+'%';requestAnimationFrame(loop);})();}catch(e){}}
+function startRecog(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR)return false;
+  recog=new SR();recog.continuous=true;recog.interimResults=true;recog.lang='en-US';
+  recog.onresult=e=>{interimText="";for(let i=e.resultIndex;i<e.results.length;i++){const r=e.results[i];if(r.isFinal)finalText+=r[0].transcript+" ";else interimText+=r[0].transcript;}paintTranscript();};
+  recog.onerror=()=>{};try{recog.start();return true;}catch(e){return false;}}
+function pickMime(){const c=['audio/webm;codecs=opus','audio/webm','audio/mp4'];for(const m of c){if(window.MediaRecorder&&MediaRecorder.isTypeSupported(m))return m;}return '';}
+$('#recToggle').onclick=()=>{
+  if(recorder&&recorder.state==='recording'){stopRec();return;}
+  recChunks=[];finalText="";interimText="";paintTranscript();
+  try{const audioStream=new MediaStream(mediaStream.getAudioTracks());const mt=pickMime();
+    recorder=new MediaRecorder(audioStream, mt?{mimeType:mt,audioBitsPerSecond:32000}:undefined);
+    recorder.ondataavailable=e=>{if(e.data&&e.data.size)recChunks.push(e.data);};
+    recorder.onstop=saveClip;recorder.start();}catch(e){$('#recStatus').textContent="Couldn't start recording on this browser.";return;}
+  startRecog();
+  $('#recToggle').textContent='■ Stop';$('#recDot').classList.add('on');$('#recStatus').textContent="Recording…";
+  recStart=Date.now();recTimer=setInterval(()=>{const s=Math.floor((Date.now()-recStart)/1000);
+    $('#recTime').textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
+    if(s>=75)stopRec();},400);
+};
+function stopRec(){if(recorder&&recorder.state==='recording')recorder.stop();if(recog)try{recog.stop();}catch(e){}
+  clearInterval(recTimer);$('#recDot').classList.remove('on');$('#recToggle').textContent='● Record';}
+function saveClip(){
+  const blob=new Blob(recChunks,{type:recorder.mimeType||'audio/webm'});
+  const reader=new FileReader();
+  reader.onload=()=>{recorded[spkIdx]={audio:reader.result,transcript:finalText.trim()};
+    $('#recStatus').textContent="Saved. Re-record to replace it, or continue.";updateSpkNext();};
+  reader.readAsDataURL(blob);
+}
+$('#spkNext').onclick=()=>{
+  stopRec();
+  const r=recorded[spkIdx]||{};
+  state.speaking[spkIdx]={prompt:SPK[spkIdx].q,transcript:r.transcript||"(audio recorded, transcript unavailable)",audio:r.audio||null};
+  if(spkIdx<SPK.length-1){spkIdx++;renderSpk();}else startSim();
+};
+
+/* ---------- simulation ---------- */
+const SIM_SYS=`You are roleplaying a CUSTOMER calling Stealth Mode Three, an e-commerce/retail company that sells consumer products and service packages by phone. The person you're talking to is a JOB CANDIDATE auditioning for a phone sales rep role. Behave like a realistic inbound customer so we can see whether they can sell.
+Rules:
+- Pick ONE concrete need at the start (a product for a situation, a gift, an upgrade) and stay consistent.
+- Start mildly interested but NOT ready to buy. Make the rep work: ask a question, then raise a natural objection (price, "let me think about it", competitor comparison, or fit uncertainty).
+- If the rep listens, asks good questions, and addresses your concern, gradually warm up. If they're pushy or vague, stay hesitant.
+- Only agree to buy if the rep clearly asks for the order / tries to close. Reward a real close.
+- Keep each reply SHORT and conversational — 1 to 3 sentences. Never break character. Never coach or evaluate.`;
+let simTurns=0;const SIM_MAX=6;
+function startSim(){state.sim=[];simTurns=0;$('#chat').innerHTML='';updateTurns();$('#endSim').disabled=true;
+  $('#sendRep').disabled=false;$('#repMsg').disabled=false;$('#repMsg').placeholder="Type your response to the customer…";
+  show('s-sim');
+  const open="Hi, yeah — I saw you guys online and had a couple of questions before I decide anything.";
+  addBubble('cust','Customer',open);state.sim.push({role:'assistant',content:open});}
+function addBubble(kind,who,text){const w=document.createElement('div');w.className='who'+(kind==='rep'?' rep':'');w.textContent=who;
+  const b=document.createElement('div');b.className='bubble '+kind;b.textContent=text;$('#chat').appendChild(w);$('#chat').appendChild(b);$('#chat').scrollTop=$('#chat').scrollHeight;}
+function updateTurns(){$('#turns').textContent=`Exchange ${simTurns} / ${SIM_MAX}`;}
+$('#sendRep').onclick=sendRep;
+$('#repMsg').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendRep();}});
+async function sendRep(){
+  const msg=$('#repMsg').value.trim();if(!msg)return;
+  $('#repMsg').value='';$('#sendRep').disabled=true;
+  addBubble('rep','You (Rep)',msg);state.sim.push({role:'user',content:msg});simTurns++;updateTurns();
+  $('#typing').style.display='block';
+  try{const reply=await callClaude(state.sim,SIM_SYS,400);state.sim.push({role:'assistant',content:reply});addBubble('cust','Customer',reply);}
+  catch(e){addBubble('cust','Customer',"(Sorry, bad connection — go ahead.)");}
+  $('#typing').style.display='none';
+  if(simTurns>=SIM_MAX){$('#endSim').disabled=false;$('#sendRep').disabled=true;$('#repMsg').disabled=true;$('#repMsg').placeholder="That's a wrap — end the call to continue.";}
+  else{$('#sendRep').disabled=false;if(simTurns>=2)$('#endSim').disabled=false;}
+}
+$('#endSim').onclick=()=>show('s-written');
+
+/* ---------- submit + scoring ---------- */
+$('#submitAll').onclick=()=>{state.written={email:$('#wEmail').value.trim(),chat:$('#wChat').value.trim()};show('s-result');runScoring();};
+const RUBRIC_SYS=`You are an expert sales-hiring assessor for Stealth Mode Three, hiring a REMOTE PHONE SALES & CUSTOMER SUPPORT rep. Top priorities: (1) SALES ABILITY on the phone (rapport, needs discovery, product matching, objection handling, and actually asking for and closing the order), and (2) SPOKEN CLARITY & COMPREHENSIBILITY — how easily a US customer would understand them: fluency, clear intelligible English, neutral easy-to-follow delivery. Assess clarity/intelligibility ONLY; do NOT judge or penalize national origin, ethnicity, or having an accent per se — many clear, trustworthy speakers have accents. Judge whether a customer can easily understand and trust them.
+Score each dimension 0-100. Weight overall: sales_ability 45%, spoken_clarity 30%, csr_written 15%, professionalism 10%. Verdicts: 75+ "Strong fit", 55-74 "Promising", below 55 "Not a fit".
+Reply with ONLY valid JSON, no markdown, exactly:
+{"spoken_clarity":{"score":0,"summary":""},"sales_ability":{"score":0,"summary":""},"csr_written":{"score":0,"summary":""},"professionalism":{"score":0,"summary":""},"overall_score":0,"verdict":"","strengths":["",""],"concerns":["",""],"recommendation":""}
+Keep summaries to one sentence, lists to 2-3 short items.`;
+function buildRubricInput(){
+  const spk=state.speaking.map((s,i)=>`Spoken task ${i+1}: "${s.transcript||'(no transcript)'}"`).join("\n");
+  const call=state.sim.map(m=>(m.role==='user'?'REP: ':'CUSTOMER: ')+m.content).join("\n");
+  return `CANDIDATE: ${state.name} | stated experience: ${state.exp||'n/a'}
+Eligibility (US hours, quiet workspace, English by phone, has closed sales): ${state.eligibility.map(b=>b?'yes':'no').join(', ')}
+== SPOKEN TASKS (transcripts; clarity proxy) ==
+${spk||'(none)'}
+== LIVE SALES ROLE-PLAY (rep = candidate) ==
+${call}
+== WRITTEN EMAIL ==
+${state.written.email||'(none)'}
+== WRITTEN CHAT ==
+${state.written.chat||'(none)'}
+Assess against the priorities and return the JSON.`;
+}
+async function runScoring(){
+  try{
+    const out=await callClaude([{role:'user',content:buildRubricInput()}],RUBRIC_SYS,1000);
+    const clean=out.replace(/```json|```/g,'').trim();
+    const j=JSON.parse(clean.slice(clean.indexOf('{'),clean.lastIndexOf('}')+1));
+    state.scores=j;await persist(j);renderResult(j);
+  }catch(e){
+    $('#scoringCard').innerHTML='<h2>Couldn\'t complete automated scoring</h2><p class="note">The scoring service didn\'t respond. Your responses are saved for manual review.</p>';
+    try{await persist(null);}catch(_){}
+  }
+}
+async function persist(scores){
+  const rec={id:state.id,name:state.name,email:state.email,exp:state.exp,eligibility:state.eligibility,
+    speaking:state.speaking.map(s=>({prompt:s.prompt,transcript:s.transcript,hasAudio:!!s.audio})),
+    sim:state.sim,written:state.written,scores,ts:state.ts};
+  try{await window.storage.set('sm3:cand:'+state.id,JSON.stringify(rec),true);}catch(e){}
+  // store audio clips separately (kept small via short cap + low bitrate)
+  for(let i=0;i<state.speaking.length;i++){const a=state.speaking[i].audio;
+    if(a&&a.length<4_500_000){try{await window.storage.set('sm3:audio:'+state.id+':'+i,a,true);}catch(e){}}}
+}
+function ringCss(v){const c=v>=75?'var(--pass)':v>=55?'var(--maybe)':'var(--fail)';return `background:conic-gradient(${c} calc(${v}*1%),#EDEBF7 0)`;}
+function pillClass(verdict){return /strong/i.test(verdict)?'pass':/promising/i.test(verdict)?'maybe':'fail';}
+function ringColor(v){return v>=75?'var(--pass)':v>=55?'var(--maybe)':'var(--fail)';}
+function metric(name,obj){obj=obj||{score:0,summary:''};return `<div class="metric"><div class="head"><b>${name}</b><span class="v">${obj.score}/100</span></div><div class="track"><i style="width:${obj.score}%"></i></div><small>${obj.summary||''}</small></div>`;}
+function renderResult(j){
+  $('#scoringCard').innerHTML=`
+    <span class="eyebrow">Assessment complete</span>
+    <div class="verdict" style="margin-top:12px">
+      <div class="score-ring" style="${ringCss(j.overall_score)}"><div class="inner"><b>${j.overall_score}</b><span>OVERALL</span></div></div>
+      <div><div class="note">Recommendation</div><div class="big">${j.verdict}</div><div class="note" style="margin-top:4px">${j.recommendation||''}</div></div>
+    </div>
+    ${metric('Sales ability (priority)',j.sales_ability)}
+    ${metric('Spoken clarity &amp; comprehensibility (priority)',j.spoken_clarity)}
+    ${metric('Written / CSR quality',j.csr_written)}
+    ${metric('Professionalism &amp; fit',j.professionalism)}
+    <div class="cols">
+      <div><h3>Strengths</h3><ul class="list">${(j.strengths||[]).map(s=>`<li>${s}</li>`).join('')}</ul></div>
+      <div><h3>Watch-outs</h3><ul class="list">${(j.concerns||[]).map(s=>`<li>${s}</li>`).join('')}</ul></div>
+    </div>
+    <hr class="sep"><div class="actions"><div class="note">This result has been saved to the recruiter dashboard.</div><div class="spacer"></div><button class="btn" id="finishBtn">Finish ›</button></div>`;
+  $('#finishBtn').onclick=()=>show('s-done');
+}
+
+/* ---------- recruiter auth (on-page, no popups) ---------- */
+async function getAuth(){try{const r=await window.storage.get('sm3:config:auth',true);return r&&r.value?JSON.parse(r.value):null;}catch(e){return null;}}
+async function setAuth(user,pw){await window.storage.set('sm3:config:auth',JSON.stringify({user,hash:await hash(pw)}),true);}
+$('#recBtn').onclick=async()=>{
+  const auth=await getAuth();
+  $('#loginMsg').textContent="";$('#rPass').value="";$('#rPass2').value="";
+  if(!auth){ // first-time setup
+    $('#loginEyebrow').textContent="Recruiter setup";$('#loginTitle').textContent="Create recruiter account";
+    $('#loginSub').textContent="No account exists yet. Set a username and password — you can change the password later.";
+    $('#userWrap').style.display='';$('#pass2Wrap').style.display='';$('#passLab').textContent="Password";
+    $('#rUser').value="recruiter";$('#loginGo').textContent="Create account";$('#loginGo').dataset.mode="setup";
+  }else{
+    $('#loginEyebrow').textContent="Recruiter access";$('#loginTitle').textContent="Sign in";$('#loginSub').textContent="";
+    $('#userWrap').style.display='';$('#pass2Wrap').style.display='none';$('#passLab').textContent="Password";
+    $('#rUser').value=auth.user||"recruiter";$('#loginGo').textContent="Sign in";$('#loginGo').dataset.mode="login";
+  }
+  show('s-login');
+};
+$('#loginBack').onclick=()=>show('s-welcome');
+$('#loginGo').onclick=async()=>{
+  const mode=$('#loginGo').dataset.mode,user=$('#rUser').value.trim(),pw=$('#rPass').value;
+  if(mode==="setup"){
+    if(!user||pw.length<4){$('#loginMsg').textContent="Choose a username and a password of at least 4 characters.";return;}
+    if(pw!==$('#rPass2').value){$('#loginMsg').textContent="Passwords don't match.";return;}
+    await setAuth(user,pw);loggedIn=true;openDashboard();return;
+  }
+  const auth=await getAuth();
+  if(auth&&user===(auth.user||user)&&await hash(pw)===auth.hash){loggedIn=true;openDashboard();}
+  else $('#loginMsg').textContent="Incorrect username or password.";
+};
+function openDashboard(){const url=(location.href||'').startsWith('http')?location.href:'';$('#inviteLink').value=url;loadCandidates();show('s-recruiter');}
+$('#exitRec').onclick=()=>show('s-welcome');
+$('#refreshBtn').onclick=loadCandidates;
+$('#copyInvite').onclick=async()=>{
+  const link=$('#inviteLink').value.trim()||"[paste your assessment link]";
+  const msg=`Hi,\n\nThanks for applying to the Sales & Customer Support role at Stealth Mode Three. Please complete our short online assessment (about 15–20 minutes). You'll need a quiet space, a microphone and a camera.\n\nStart here: ${link}\n\nOpen the link in Chrome or Safari and allow microphone access when prompted.\n\nGood luck!\nStealth Mode Three Hiring Team`;
+  const ok=await copyText(msg);
+  $('#inviteMsg').textContent=ok?"Invite message copied to clipboard.":"Couldn't auto-copy — select the link field and copy manually.";
+  setTimeout(()=>{$('#inviteMsg').textContent="";},4000);
+};
+
+/* change password */
+$('#changePwBtn').onclick=()=>{$('#curPw').value="";$('#newPw').value="";$('#newPw2').value="";$('#pwMsg').textContent="";show('s-changepw');};
+$('#pwCancel').onclick=()=>show('s-recruiter');
+$('#pwSave').onclick=async()=>{
+  const auth=await getAuth();
+  if(!auth||await hash($('#curPw').value)!==auth.hash){$('#pwMsg').className="msg err";$('#pwMsg').textContent="Current password is incorrect.";return;}
+  const np=$('#newPw').value;
+  if(np.length<4){$('#pwMsg').className="msg err";$('#pwMsg').textContent="New password must be at least 4 characters.";return;}
+  if(np!==$('#newPw2').value){$('#pwMsg').className="msg err";$('#pwMsg').textContent="New passwords don't match.";return;}
+  await setAuth(auth.user,np);$('#pwMsg').className="msg ok";$('#pwMsg').textContent="Password updated.";
+  setTimeout(()=>show('s-recruiter'),900);
+};
+
+/* ---------- dashboard data ---------- */
+async function loadCandidates(){
+  const list=$('#candList');list.innerHTML='<p class="note">Loading…</p>';
+  let recs=[];
+  try{const keys=await window.storage.list('sm3:cand:',true);
+    for(const k of (keys.keys||[])){try{const r=await window.storage.get(k,true);if(r&&r.value)recs.push(JSON.parse(r.value));}catch(e){}}}catch(e){}
+  $('#candCount').textContent=recs.length?`${recs.length} candidate${recs.length>1?'s':''}`:'';
+  if(!recs.length){list.innerHTML='<p class="note">No candidates have completed the assessment yet. Share the invite link above.</p>';return;}
+  recs.sort((a,b)=>((b.scores&&b.scores.overall_score)||0)-((a.scores&&a.scores.overall_score)||0));
+  list.innerHTML=recs.map(r=>{
+    const sc=r.scores,verdict=sc?sc.verdict:'Not scored',pc=sc?pillClass(verdict):'fail';
+    const call=r.sim.map(m=>(m.role==='user'?'REP: ':'CUSTOMER: ')+m.content).join('\n');
+    const spk=r.speaking.map((s,n)=>`#${n+1}: ${s.transcript||'(none)'}`).join('\n\n');
+    return `<div class="cand" data-id="${r.id}">
+      <div class="top">
+        <div><div class="name">${esc(r.name)||'(no name)'} ${sc?`· <span style="color:${ringColor(sc.overall_score)}">${sc.overall_score}</span>`:''}</div>
+        <div class="meta">${esc(r.email)||''} · ${new Date(r.ts).toLocaleString()}</div></div>
+        <span class="pill ${pc}">${verdict}</span>
+      </div>
+      <div class="detail">
+        ${sc?`<div class="kv"><b>Sales:</b> ${sc.sales_ability.score} — ${esc(sc.sales_ability.summary)}</div>
+        <div class="kv"><b>Spoken clarity:</b> ${sc.spoken_clarity.score} — ${esc(sc.spoken_clarity.summary)}</div>
+        <div class="kv"><b>Written/CSR:</b> ${sc.csr_written.score} — ${esc(sc.csr_written.summary)}</div>
+        <div class="kv"><b>Professionalism:</b> ${sc.professionalism.score} — ${esc(sc.professionalism.summary)}</div>
+        <div class="kv"><b>Recommendation:</b> ${esc(sc.recommendation||'')}</div>`:'<div class="kv">Automated scoring not completed.</div>'}
+        <div class="kv"><b>Experience:</b> ${esc(r.exp)||'n/a'} · <b>Eligibility:</b> ${r.eligibility.map(b=>b?'✓':'✗').join(' ')}</div>
+        <div class="kv"><b>Voice recordings</b> <span class="note">(listen to assess accent/clarity)</span><div class="audio-slot" data-id="${r.id}" data-n="${r.speaking.length}"></div></div>
+        <div class="kv"><b>Spoken transcripts</b><div class="mono-block">${esc(spk)||'(none)'}</div></div>
+        <div class="kv"><b>Sales call transcript</b><div class="mono-block">${esc(call)}</div></div>
+        <div class="kv"><b>Email reply</b><div class="mono-block">${esc(r.written.email)||'(none)'}</div></div>
+        <div class="kv"><b>Chat reply</b><div class="mono-block">${esc(r.written.chat)||'(none)'}</div></div>
+      </div></div>`;
+  }).join('');
+  $$('#candList .cand .top').forEach(t=>t.onclick=function(){
+    const card=this.parentNode;card.classList.toggle('open');
+    if(card.classList.contains('open')){const slot=card.querySelector('.audio-slot');if(slot&&!slot.dataset.loaded)loadAudio(slot);}
+  });
+}
+function esc(s){return (s==null?'':String(s)).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+async function loadAudio(slot){
+  slot.dataset.loaded="1";const id=slot.dataset.id,n=+slot.dataset.n;let any=false;
+  for(let i=0;i<n;i++){try{const r=await window.storage.get('sm3:audio:'+id+':'+i,true);
+    if(r&&r.value){any=true;const lab=document.createElement('div');lab.className='note';lab.textContent='Task '+(i+1);
+      const au=document.createElement('audio');au.controls=true;au.src=r.value;slot.appendChild(lab);slot.appendChild(au);}}catch(e){}}
+  if(!any)slot.innerHTML='<span class="note">No audio stored (candidate may have used an unsupported browser).</span>';
+}
+</script>
