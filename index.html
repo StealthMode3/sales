@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Stealth Mode Three — Sales Readiness Assessment</title>
+<title>Stealth Mode Three — Oral Assessment</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -16,651 +16,448 @@
 }
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;line-height:1.5}
-body{background:
-  radial-gradient(1100px 540px at 88% -8%, rgba(108,99,255,.10), transparent 60%),
-  radial-gradient(820px 460px at -8% 108%, rgba(139,130,255,.10), transparent 55%),
-  var(--bg);min-height:100vh}
-a{color:var(--brand-deep);text-decoration:none}
+body{background:radial-gradient(1100px 540px at 88% -8%, rgba(108,99,255,.10), transparent 60%),radial-gradient(820px 460px at -8% 108%, rgba(139,130,255,.10), transparent 55%),var(--bg);min-height:100vh}
 button{font-family:var(--body);cursor:pointer}
 :focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:6px}
-.wrap{max-width:880px;margin:0 auto;padding:26px 22px 80px}
-.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}
+.wrap{max-width:900px;margin:0 auto;padding:26px 22px 80px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
 .logo-badge{background:#0B0B14;border-radius:12px;padding:9px 14px;display:inline-flex;box-shadow:var(--sh)}
 .logo{height:30px;width:auto;display:block}
-.navbtn{font-family:var(--mono);font-size:12px;color:var(--muted);border:1px solid var(--line2);
-  padding:8px 13px;border-radius:9px;background:var(--card)}
-.navbtn:hover{color:var(--ink);border-color:var(--brand);background:var(--brand-soft)}
+.navbtn{font-family:var(--mono);font-size:12px;color:var(--muted);border:1px solid var(--line2);padding:8px 13px;border-radius:9px;background:var(--card)}
 .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--brand-deep)}
-h1{font-family:var(--disp);font-weight:700;font-size:clamp(29px,5.2vw,44px);line-height:1.05;letter-spacing:-.01em;margin:.3em 0 .25em}
-h2{font-family:var(--disp);font-weight:600;font-size:clamp(20px,3.3vw,26px);letter-spacing:-.01em;margin:0 0 6px}
+h1{font-family:var(--disp);font-weight:700;font-size:clamp(27px,4.8vw,40px);line-height:1.06;letter-spacing:-.01em;margin:.3em 0 .25em}
+h2{font-family:var(--disp);font-weight:600;font-size:clamp(19px,3.2vw,25px);letter-spacing:-.01em;margin:0 0 6px}
 h3{font-family:var(--disp);font-weight:600;font-size:15px;margin:0 0 4px}
 p{color:#3E3D55}
-.lead{color:var(--muted);font-size:17px;max-width:62ch}
+.lead{color:var(--muted);font-size:16px;max-width:64ch}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:var(--sh)}
 .card+.card{margin-top:18px}
-.screen{display:none;animation:rise .4s cubic-bezier(.2,.7,.2,1)}
-.screen.active{display:block}
+.screen{display:none;animation:rise .4s cubic-bezier(.2,.7,.2,1)}.screen.active{display:block}
 @keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.screen{animation:none}}
-
-.rail{display:flex;align-items:center;gap:6px;margin:0 0 22px;flex-wrap:wrap}
-.chev{display:flex;align-items:center;gap:5px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
-.chev svg{width:14px;height:14px}
-.chev .glyph path{fill:var(--faint)}
-.chev.done .glyph path{fill:var(--brand)} .chev.active .glyph path{fill:var(--brand-deep)}
-.chev.done,.chev.active{color:var(--ink)}
-.chev .bar{width:18px;height:2px;background:var(--line2);border-radius:2px}
-.chev.done .bar{background:var(--brand)}
-
+@media(prefers-reduced-motion:reduce){.screen{animation:none}}
 .field{margin:16px 0}
 label.lab{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
-input[type=text],input[type=email],input[type=password],textarea,select{width:100%;background:#FBFBFE;border:1px solid var(--line2);color:var(--ink);border-radius:11px;padding:13px 14px;font-family:var(--body);font-size:15px;resize:vertical}
-textarea{min-height:120px;line-height:1.55}
+input,textarea,select{width:100%;background:#FBFBFE;border:1px solid var(--line2);color:var(--ink);border-radius:11px;padding:13px 14px;font-family:var(--body);font-size:15px}
 input:focus,textarea:focus,select:focus{border-color:var(--brand);outline:none;background:#fff}
-.opts{display:grid;gap:8px}
-.opt{display:flex;align-items:center;gap:10px;background:#FBFBFE;border:1px solid var(--line2);border-radius:11px;padding:11px 13px;font-size:14px;color:#3E3D55}
-.opt input{accent-color:var(--brand);width:16px;height:16px}
-.row{display:flex;gap:12px;flex-wrap:wrap}.row>*{flex:1;min-width:220px}
-
-.btn{display:inline-flex;align-items:center;gap:9px;background:var(--brand);color:#fff;border:none;padding:14px 22px;border-radius:12px;font-weight:600;font-size:15px;font-family:var(--disp);transition:transform .12s,background .15s,box-shadow .15s;box-shadow:0 10px 22px -12px rgba(108,99,255,.8)}
+.row{display:flex;gap:12px;flex-wrap:wrap}.row>*{flex:1;min-width:200px}
+.btn{display:inline-flex;align-items:center;gap:9px;background:var(--brand);color:#fff;border:none;padding:13px 20px;border-radius:12px;font-weight:600;font-size:15px;font-family:var(--disp);transition:transform .12s,background .15s,box-shadow .15s;box-shadow:0 10px 22px -12px rgba(108,99,255,.8)}
 .btn:hover{background:var(--brand-bright);transform:translateY(-1px)}
 .btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
 .btn.ghost{background:#fff;border:1px solid var(--line2);color:var(--ink);box-shadow:none}
 .btn.ghost:hover{border-color:var(--brand);background:var(--brand-soft)}
-.btn.sm{padding:10px 15px;font-size:13px}
-.actions{display:flex;gap:12px;align-items:center;margin-top:24px;flex-wrap:wrap}
-.spacer{flex:1}
+.btn.sm{padding:9px 14px;font-size:13px}
+.actions{display:flex;gap:12px;align-items:center;margin-top:22px;flex-wrap:wrap}.spacer{flex:1}
 .note{font-size:13px;color:var(--muted)}
 .callout{border-left:3px solid var(--brand);background:var(--brand-soft);padding:12px 14px;border-radius:0 11px 11px 0;font-size:13.5px;color:#3a3760;margin:14px 0}
 .tag{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--brand-deep);background:var(--brand-soft);padding:4px 9px;border-radius:7px;display:inline-block}
-.msg{font-size:13px;margin-top:10px;min-height:18px}
-.msg.err{color:var(--fail)} .msg.ok{color:var(--pass)}
+.msg{font-size:13px;margin-top:10px;min-height:18px}.msg.err{color:var(--fail)}.msg.ok{color:var(--pass)}
 .warnbox{border:1px solid var(--maybe);background:var(--maybe-soft);border-radius:11px;padding:12px 14px;font-size:13px;color:#7a5a14;margin:14px 0}
-
-.media-stage{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
-.media-stage>div{flex:1;min-width:260px}
-.video-box{aspect-ratio:4/3;background:#0B0B14;border:1px solid var(--line2);border-radius:14px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13.5px}
+th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pill{font-family:var(--mono);font-size:11px;padding:4px 9px;border-radius:20px;font-weight:700;display:inline-block}
+.pill.pass{background:var(--pass-soft);color:var(--pass)}.pill.maybe{background:var(--maybe-soft);color:var(--maybe)}.pill.fail{background:var(--fail-soft);color:var(--fail)}
+.pill.wait{background:#EDEBF7;color:var(--muted)}
+.check{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--line2);border-radius:13px;padding:16px;margin:12px 0;background:#FBFBFE}
+.check .ic{font-size:24px}.check .ok{color:var(--pass);font-weight:700}
+.video-box{aspect-ratio:4/3;background:#0B0B14;border-radius:14px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
 .video-box video{width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
 .video-box .ph{color:#9b99b6;font-family:var(--mono);font-size:12px;text-align:center;padding:18px}
 .rec-dot{position:absolute;top:10px;left:10px;display:none;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;color:#fff;background:rgba(0,0,0,.5);padding:4px 9px;border-radius:20px}
-.rec-dot.on{display:flex}
-.rec-dot .d{width:8px;height:8px;border-radius:50%;background:#ff5d73;animation:blink 1s infinite}
+.rec-dot.on{display:flex}.rec-dot .d{width:8px;height:8px;border-radius:50%;background:#ff5d73;animation:blink 1s infinite}
 @keyframes blink{50%{opacity:.25}}
-.meter{height:6px;background:#EDEBF7;border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-top:8px}
-.meter>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--brand-bright))}
-.box{background:#FBFBFE;border:1px solid var(--line2);border-radius:12px;padding:14px;min-height:150px;font-size:14px;color:#3E3D55;white-space:pre-wrap}
-.box .interim{color:var(--faint)} .box .ph{color:var(--faint)}
-.prompt-card{background:var(--brand-soft);border:1px solid #ddd8ff;border-radius:13px;padding:16px 18px;margin:14px 0}
-.prompt-card .q{font-size:16px;color:#2c2a47;margin:0}
-.script{font-family:var(--mono);font-size:13.5px;line-height:1.7;color:#3a3760;background:#fff;border:1px solid #e3dfff;border-radius:10px;padding:14px;margin-top:10px}
-
-.chat{display:flex;flex-direction:column;gap:12px;max-height:46vh;overflow-y:auto;padding:4px 2px}
-.bubble{max-width:82%;padding:11px 14px;border-radius:15px;font-size:14.5px;line-height:1.5}
-.bubble.cust{align-self:flex-start;background:var(--bg2);border:1px solid var(--line);border-bottom-left-radius:5px;color:#2c2a47}
-.bubble.rep{align-self:flex-end;background:linear-gradient(180deg,var(--brand),var(--brand-deep));color:#fff;border-bottom-right-radius:5px}
-.who{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin:0 4px 4px}
-.who.rep{text-align:right}
-.typing{font-family:var(--mono);font-size:12px;color:var(--muted);padding:4px}
-.composer{display:flex;gap:10px;margin-top:14px;align-items:flex-end}
-.composer textarea{min-height:54px}
-.turncount{font-family:var(--mono);font-size:11px;color:var(--faint)}
-
-.verdict{display:flex;align-items:center;gap:18px;flex-wrap:wrap;border-radius:14px;padding:20px;border:1px solid var(--line2);background:#FBFBFE;margin-bottom:18px}
-.verdict .big{font-family:var(--disp);font-weight:700;font-size:28px}
-.score-ring{width:96px;height:96px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center}
-.score-ring .inner{width:74px;height:74px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.score-ring b{font-family:var(--disp);font-size:24px}
-.score-ring span{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.1em}
-.metric{margin:14px 0}
-.metric .head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
-.metric .head b{font-family:var(--disp);font-size:15px}
-.metric .head .v{font-family:var(--mono);font-size:13px;color:var(--brand-deep)}
-.metric .track{height:9px;background:#EDEBF7;border:1px solid var(--line);border-radius:9px;overflow:hidden}
-.metric .track>i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,var(--brand-deep),var(--brand-bright));transition:width .8s ease}
-.metric small{color:var(--muted);font-size:12.5px;display:block;margin-top:6px}
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
-@media(max-width:640px){.cols{grid-template-columns:1fr}}
-.list{margin:6px 0 0;padding-left:18px}.list li{margin:4px 0;font-size:13.5px;color:#3E3D55}
-
+.meter{height:6px;background:#EDEBF7;border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-top:8px}.meter>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--brand-bright))}
+.box{background:#FBFBFE;border:1px solid var(--line2);border-radius:12px;padding:14px;min-height:130px;font-size:14px;color:#3E3D55;white-space:pre-wrap}.box .interim{color:var(--faint)}.box .ph{color:var(--faint)}
+.prompt-card{background:var(--brand-soft);border:1px solid #ddd8ff;border-radius:13px;padding:18px;margin:6px 0 14px}
+.prompt-card .q{font-size:18px;color:#23213c;margin:8px 0 0;font-family:var(--disp);font-weight:600;line-height:1.3}
+.script{font-family:var(--mono);font-size:14px;line-height:1.7;color:#3a3760;background:#fff;border:1px solid #e3dfff;border-radius:10px;padding:14px;margin-top:12px}
+.qgrid{display:flex;gap:18px;flex-wrap:wrap}.qgrid>div{flex:1;min-width:260px}
+.monitor{border:1px solid var(--line2);border-radius:13px;padding:14px;background:#FBFBFE}
+.monitor .stat{display:flex;justify-content:space-between;font-size:13px;margin:6px 0;color:#3E3D55}
+.timer{font-family:var(--mono);font-size:20px;color:var(--brand-deep)}
+.qnav{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 12px}
+.qdot{width:26px;height:26px;border-radius:8px;border:1px solid var(--line2);background:#fff;font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;align-items:center;justify-content:center}
+.qdot.cur{border-color:var(--brand);color:var(--brand-deep);font-weight:700}.qdot.done{background:var(--brand);color:#fff;border-color:var(--brand)}
+.scorebar{height:9px;background:#EDEBF7;border:1px solid var(--line);border-radius:9px;overflow:hidden;margin-top:5px}.scorebar>i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,var(--brand-deep),var(--brand-bright))}
+.kpt{font-size:12.5px;margin:3px 0}.kpt.hit{color:var(--pass)}.kpt.miss{color:var(--faint)}
+.detail{display:none;margin-top:12px;border-top:1px solid var(--line);padding-top:12px}.cand.open .detail{display:block}
 .cand{border:1px solid var(--line);border-radius:13px;padding:14px 16px;margin:10px 0;background:#FBFBFE}
-.cand .top{display:flex;justify-content:space-between;align-items:center;gap:12px;cursor:pointer}
-.cand .name{font-family:var(--disp);font-weight:600;font-size:16px}
-.cand .meta{font-family:var(--mono);font-size:11px;color:var(--muted)}
-.pill{font-family:var(--mono);font-size:11px;padding:5px 10px;border-radius:20px;font-weight:700}
-.pill.pass{background:var(--pass-soft);color:var(--pass)} .pill.maybe{background:var(--maybe-soft);color:var(--maybe)} .pill.fail{background:var(--fail-soft);color:var(--fail)}
-.cand .detail{display:none;margin-top:14px;border-top:1px solid var(--line);padding-top:14px}
-.cand.open .detail{display:block}
-.kv{font-size:13px;color:#3E3D55;margin:9px 0}.kv b{color:var(--ink);font-family:var(--disp)}
 .mono-block{font-family:var(--mono);font-size:12px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:9px;padding:10px;white-space:pre-wrap;margin-top:6px;max-height:200px;overflow:auto}
-.audio-slot audio{width:100%;margin-top:8px}
-.spin{width:18px;height:18px;border:2px solid rgba(108,99,255,.25);border-top-color:var(--brand);border-radius:50%;display:inline-block;animation:sp .7s linear infinite}
-@keyframes sp{to{transform:rotate(360deg)}}
-.center{text-align:center}
 hr.sep{border:none;border-top:1px solid var(--line);margin:22px 0}
-.copybar{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-.copybar input{flex:1;min-width:240px}
+.copybar{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}.copybar input{flex:1;min-width:240px}
+.verdict{display:flex;align-items:center;gap:18px;flex-wrap:wrap;border-radius:14px;padding:20px;border:1px solid var(--line2);background:#FBFBFE;margin-bottom:14px}
+.score-ring{width:90px;height:90px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center}
+.score-ring .inner{width:70px;height:70px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-ring b{font-family:var(--disp);font-size:22px}.score-ring span{font-family:var(--mono);font-size:9px;color:var(--muted)}
+.center{text-align:center}
 </style>
 
 <div class="wrap">
   <div class="topbar">
     <div class="logo-badge"><img class="logo" alt="Stealth Mode Three" src="data:image/jpeg;base64,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"></div>
-    <button class="navbtn" id="recBtn">Recruiter access</button>
+    <button class="navbtn" id="signOut" style="display:none">Sign out</button>
   </div>
 
-  <!-- WELCOME -->
-  <section class="screen active" id="s-welcome">
-    <div class="rail"></div>
-    <div class="card">
-      <span class="eyebrow">Remote Sales &amp; Customer Support · Phone-first</span>
-      <h1>Sales readiness assessment</h1>
-      <p class="lead">This short assessment puts you in the seat — a live customer call, real objections, and the moment that matters: asking for the order. It takes about 15–20 minutes.</p>
-      <div class="callout"><b>You'll need a working microphone and camera.</b> Two stages are spoken, so we can hear how you sound on a real call. Find a quiet spot, then begin.</div>
-      <div class="actions">
-        <button class="btn" id="beginBtn">Begin assessment ›</button>
-        <span class="note">Best experience in Chrome or Safari, opened in its own browser tab.</span>
-      </div>
+  <!-- ADMIN SETUP -->
+  <section class="screen" id="a-setup">
+    <div class="card" style="max-width:480px;margin:0 auto">
+      <span class="eyebrow">First-time setup</span><h2 style="margin-top:6px">Create your admin account</h2>
+      <p class="note">This protects the dashboard. Candidates never see it.</p>
+      <div class="field"><label class="lab">Company name</label><input id="suCompany" type="text" value="Stealth Mode Three"></div>
+      <div class="field"><label class="lab">Results return email</label><input id="suEmail" type="email" placeholder="hiring@yourcompany.com"></div>
+      <div class="field"><label class="lab">Password</label><input id="suPass" type="password"></div>
+      <div class="field"><label class="lab">Confirm password</label><input id="suPass2" type="password"></div>
+      <div class="msg err" id="suMsg"></div>
+      <div class="actions"><button class="btn" id="suGo">Create admin account</button></div>
     </div>
   </section>
 
-  <!-- DETAILS -->
-  <section class="screen" id="s-details">
-    <div class="rail"></div>
-    <div class="card">
-      <span class="eyebrow">Stage 1 · About you</span>
-      <h2>Eligibility &amp; basics</h2>
-      <p class="note">The role runs on US business hours, 6 days a week (9-hour shifts, one day off Sat or Sun).</p>
-      <div class="row">
-        <div class="field"><label class="lab" for="cName">Full name</label><input id="cName" type="text" placeholder="Jordan Rivera"></div>
-        <div class="field"><label class="lab" for="cEmail">Email</label><input id="cEmail" type="email" placeholder="you@email.com"></div>
-      </div>
-      <div class="field"><label class="lab" for="cExp">Years of phone sales / telesales / call-center experience</label>
-        <select id="cExp"><option value="">Select…</option><option>None</option><option>Less than 1 year</option><option>1–2 years</option><option>3–5 years</option><option>5+ years</option></select></div>
-      <div class="field"><label class="lab">Confirm you can meet the working conditions</label>
-        <div class="opts">
-          <label class="opt"><input type="checkbox" class="elig"> I can work US business hours, 6 days/week</label>
-          <label class="opt"><input type="checkbox" class="elig"> I have a reliable internet connection and a quiet workspace</label>
-          <label class="opt"><input type="checkbox" class="elig"> I'm comfortable speaking with customers in English by phone</label>
-          <label class="opt"><input type="checkbox" class="elig"> I have closed sales or hit sales targets before</label>
-        </div>
-      </div>
-      <div class="msg err" id="detailsMsg"></div>
-      <div class="actions"><button class="btn ghost" data-back>‹ Back</button><div class="spacer"></div><button class="btn" id="detailsNext">Continue ›</button></div>
-    </div>
-  </section>
-
-  <!-- SPEAKING -->
-  <section class="screen" id="s-speaking">
-    <div class="rail"></div>
-    <div class="card">
-      <span class="eyebrow">Stage 2 · Spoken tasks</span>
-      <h2>Let's hear you on the line</h2>
-      <p class="note">Record each answer with your mic. We capture a transcript and your audio so the team can hear how clearly a customer would understand you.</p>
-      <div class="warnbox" id="micWarn" style="display:none"></div>
-
-      <div class="prompt-card">
-        <span class="tag" id="spkTag">Task 1 of 2</span>
-        <p class="q" id="spkQ" style="margin-top:8px"></p>
-        <div class="script" id="spkScript" style="display:none"></div>
-      </div>
-
-      <div class="media-stage">
-        <div>
-          <div class="video-box">
-            <video id="preview" autoplay muted playsinline></video>
-            <div class="ph" id="vph">Enable your camera &amp; mic to start.</div>
-            <div class="rec-dot" id="recDot"><span class="d"></span> REC <span id="recTime">0:00</span></div>
-          </div>
-          <div class="meter"><i id="lvl"></i></div>
-          <div class="actions" style="margin-top:12px">
-            <button class="btn sm" id="startMedia">Enable camera &amp; mic</button>
-            <button class="btn sm ghost" id="recToggle" disabled>● Record</button>
-          </div>
-        </div>
-        <div>
-          <label class="lab">Live transcript</label>
-          <div class="box" id="tbox"><span class="ph">Your words appear here as you speak…</span></div>
-          <div class="note" id="recStatus" style="margin-top:8px"></div>
-        </div>
-      </div>
-      <div class="actions"><button class="btn ghost" data-back>‹ Back</button><div class="spacer"></div><button class="btn" id="spkNext" disabled>Record an answer to continue ›</button></div>
-    </div>
-  </section>
-
-  <!-- SIMULATION -->
-  <section class="screen" id="s-sim">
-    <div class="rail"></div>
-    <div class="card">
-      <span class="eyebrow">Stage 3 · Live sales role-play</span>
-      <h2>A customer is on the line</h2>
-      <p class="note">You're a Stealth Mode Three rep. A customer (played live) has called in. Greet them, find their need, recommend something, handle pushback — and <b>close the order</b>. About 6 exchanges.</p>
-      <div id="chat" class="chat"></div>
-      <div class="typing" id="typing" style="display:none">Customer is responding…</div>
-      <div class="composer">
-        <textarea id="repMsg" placeholder="Type your response to the customer…"></textarea>
-        <button class="btn" id="sendRep">Send</button>
-      </div>
-      <div class="actions" style="margin-top:12px">
-        <span class="turncount" id="turns">Exchange 0 / 6</span><div class="spacer"></div>
-        <button class="btn ghost" id="endSim" disabled>End call &amp; continue ›</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- WRITTEN -->
-  <section class="screen" id="s-written">
-    <div class="rail"></div>
-    <div class="card">
-      <span class="eyebrow">Stage 4 · Written support</span>
-      <h2>Email &amp; chat handling</h2>
-      <p class="note">During quiet periods you'll handle email and live chat. Two quick ones.</p>
-      <div class="prompt-card"><span class="tag">Email reply</span>
-        <p class="q" style="margin-top:8px">A customer emails: <i>"Hi — I ordered last Tuesday and tracking still hasn't updated. I need this by Friday for a gift. Getting a bit worried. Can you help?"</i></p></div>
-      <textarea id="wEmail" placeholder="Write your email reply…"></textarea>
-      <div class="prompt-card" style="margin-top:18px"><span class="tag">Live chat — turn it into a sale</span>
-        <p class="q" style="margin-top:8px">Chat message: <i>"Just browsing, not sure your product is worth the price tbh."</i></p></div>
-      <textarea id="wChat" placeholder="Write your chat reply…"></textarea>
-      <div class="actions"><button class="btn ghost" data-back>‹ Back</button><div class="spacer"></div><button class="btn" id="submitAll">Submit for scoring ›</button></div>
-    </div>
-  </section>
-
-  <!-- RESULT -->
-  <section class="screen" id="s-result">
-    <div class="rail"></div>
-    <div class="card" id="scoringCard">
-      <div class="center" style="padding:36px 0">
-        <span class="spin"></span>
-        <h2 style="margin-top:16px">Scoring your assessment…</h2>
-        <p class="note" id="scoreStatus">Reviewing your call, your clarity, and your writing.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- DONE -->
-  <section class="screen" id="s-done">
-    <div class="card center" style="padding:40px 26px">
-      <span class="tag">Submitted</span>
-      <h1 style="margin-top:14px">Thank you — you're done.</h1>
-      <p class="lead" style="margin:0 auto">Your assessment has been recorded and sent to the Stealth Mode Three hiring team. If you're a fit, you'll hear about next steps.</p>
-    </div>
-  </section>
-
-  <!-- RECRUITER: LOGIN / SETUP -->
-  <section class="screen" id="s-login">
+  <!-- ADMIN LOGIN -->
+  <section class="screen" id="a-login">
     <div class="card" style="max-width:440px;margin:0 auto">
-      <span class="eyebrow" id="loginEyebrow">Recruiter access</span>
-      <h2 id="loginTitle" style="margin-top:6px">Sign in</h2>
-      <p class="note" id="loginSub"></p>
-      <div class="field" id="userWrap"><label class="lab" for="rUser">Username</label><input id="rUser" type="text" placeholder="recruiter" autocomplete="username"></div>
-      <div class="field"><label class="lab" for="rPass" id="passLab">Password</label><input id="rPass" type="password" autocomplete="current-password"></div>
-      <div class="field" id="pass2Wrap" style="display:none"><label class="lab" for="rPass2">Confirm password</label><input id="rPass2" type="password"></div>
-      <div class="msg err" id="loginMsg"></div>
-      <div class="actions"><button class="btn ghost" id="loginBack">‹ Candidate view</button><div class="spacer"></div><button class="btn" id="loginGo">Sign in</button></div>
+      <span class="eyebrow">Admin sign in</span><h2 style="margin-top:6px">Welcome back</h2>
+      <p class="note">Sign in to invite candidates and review their auto-marked results.</p>
+      <div class="field"><label class="lab">Password</label><input id="liPass" type="password"></div>
+      <div class="msg err" id="liMsg"></div>
+      <div class="actions"><button class="btn" id="liGo">Sign in</button></div>
+      <p class="note" style="margin-top:14px">Forgot it? You can reset everything (this clears all data) by adding <b>?reset=1</b> to the page address.</p>
     </div>
   </section>
 
-  <!-- RECRUITER: DASHBOARD -->
-  <section class="screen" id="s-recruiter">
+  <!-- ADMIN DASHBOARD -->
+  <section class="screen" id="a-dash">
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-        <div><span class="eyebrow">Recruiter dashboard</span><h2 style="margin-top:6px">Candidate results</h2></div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <button class="btn ghost sm" id="changePwBtn">Change password</button>
-          <button class="btn ghost sm" id="refreshBtn">↻ Refresh</button>
-          <button class="btn ghost sm" id="exitRec">Candidate view</button>
-        </div>
+        <div><span class="eyebrow">Admin dashboard</span><h2 style="margin-top:6px">Candidates</h2></div>
+        <button class="btn ghost sm" id="settingsToggle">Company settings</button>
       </div>
-
+      <div id="settingsPanel" style="display:none">
+        <hr class="sep"><h3>Company settings</h3>
+        <div class="row"><div class="field"><label class="lab">Company name</label><input id="stCompany" type="text"></div>
+        <div class="field"><label class="lab">Results return email</label><input id="stEmail" type="email"></div></div>
+        <button class="btn sm" id="saveSettings">Save settings</button><span class="msg ok" id="stMsg" style="display:inline-block;margin-left:10px"></span>
+      </div>
       <hr class="sep">
       <h3>Invite a candidate</h3>
-      <p class="note">Share this assessment link. Anyone who opens it lands on the candidate assessment; their results appear here automatically.</p>
-      <div class="copybar">
-        <input id="inviteLink" type="text" placeholder="Paste your published/hosted link here">
-        <button class="btn sm" id="copyInvite">Copy invite message</button>
+      <p class="note">Add their details, generate the link, and send it. The link is self-contained — it works on any device with no login.</p>
+      <div class="row"><div class="field"><label class="lab">Candidate name</label><input id="invName" type="text"></div>
+      <div class="field"><label class="lab">Candidate email</label><input id="invEmail" type="email"></div></div>
+      <div class="actions"><button class="btn" id="genLink">Generate link &amp; invite</button></div>
+      <div id="genOut" style="display:none">
+        <div class="copybar"><input id="genUrl" type="text" readonly><button class="btn sm" id="copyUrl">Copy link</button><button class="btn sm ghost" id="emailCand">Email candidate</button></div>
+        <div class="msg ok" id="genMsg"></div>
       </div>
-      <div class="msg ok" id="inviteMsg"></div>
-
       <hr class="sep">
-      <div style="display:flex;justify-content:space-between;align-items:baseline"><h3>Results</h3><span class="note" id="candCount"></span></div>
-      <div id="candList"></div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><h3>Roster</h3><span class="note" id="rosterCount"></span></div>
+      <div id="rosterWrap"></div>
+      <p class="note" style="margin-top:14px"><b>How results come back:</b> when a candidate submits, the page marks their answers automatically and emails you the scored summary; their recording is offered for download. Their status here updates automatically only if they finish on this same browser — otherwise update it from the email you receive.</p>
     </div>
   </section>
 
-  <!-- CHANGE PASSWORD -->
-  <section class="screen" id="s-changepw">
-    <div class="card" style="max-width:440px;margin:0 auto">
-      <span class="eyebrow">Account</span><h2 style="margin-top:6px">Change password</h2>
-      <div class="field"><label class="lab" for="curPw">Current password</label><input id="curPw" type="password"></div>
-      <div class="field"><label class="lab" for="newPw">New password</label><input id="newPw" type="password"></div>
-      <div class="field"><label class="lab" for="newPw2">Confirm new password</label><input id="newPw2" type="password"></div>
-      <div class="msg" id="pwMsg"></div>
-      <div class="actions"><button class="btn ghost" id="pwCancel">‹ Back</button><div class="spacer"></div><button class="btn" id="pwSave">Save password</button></div>
+  <!-- CANDIDATE: WELCOME -->
+  <section class="screen" id="c-welcome">
+    <div class="card">
+      <span class="eyebrow" id="cwCompany">Stealth Mode Three</span>
+      <h1>Hi <span id="cwName">there</span> 👋</h1>
+      <p class="lead">You've been invited to complete a short spoken assessment for the Sales &amp; Customer Support role. You'll answer a set of questions <b>out loud</b> — there's nothing to upload or type. It takes about 12–15 minutes.</p>
+      <div class="callout"><b>This session is proctored.</b> Before you start we'll ask you to turn on your <b>camera</b> and <b>microphone</b>. Your answers are recorded and marked automatically.</div>
+      <h3 style="margin-top:18px">Before you begin</h3>
+      <ul class="note" style="line-height:1.9">
+        <li>Use Chrome, Edge, or Safari, opened in a normal browser tab.</li>
+        <li>Find a quiet, well-lit space — speak clearly and naturally.</li>
+        <li>Each question is shown on screen (and can be read aloud to you). Press record, answer, then move on.</li>
+        <li>Stay on this tab. Switching away is logged for the reviewer.</li>
+      </ul>
+      <div class="actions"><button class="btn" id="toSysCheck">Continue to system check ›</button></div>
+    </div>
+  </section>
+
+  <!-- CANDIDATE: SYSTEM CHECK -->
+  <section class="screen" id="c-syscheck">
+    <div class="card">
+      <span class="eyebrow">System check</span><h2 style="margin-top:6px">Enable proctoring</h2>
+      <p class="note">Turn on both below. The assessment unlocks once everything is connected.</p>
+      <div class="qgrid">
+        <div>
+          <div class="check"><div class="ic">🎥</div><div style="flex:1"><h3>Camera</h3><p class="note" id="camState">We need to see you for the session.</p><button class="btn sm" id="enableCam">Enable camera</button></div></div>
+          <div class="check"><div class="ic">🎙️</div><div style="flex:1"><h3>Microphone</h3><p class="note" id="micState">Your spoken answers are recorded and marked.</p><button class="btn sm" id="enableMic">Enable microphone</button></div></div>
+          <div class="warnbox" id="scWarn" style="display:none"></div>
+        </div>
+        <div><div class="video-box"><video id="scPreview" autoplay muted playsinline></video><div class="ph" id="scPh">Camera preview appears here.</div></div>
+          <div class="meter"><i id="scLvl"></i></div></div>
+      </div>
+      <div class="actions"><button class="btn" id="startAssessment" disabled>Start assessment</button><span class="note" id="startHint">Waiting for camera and microphone.</span></div>
+    </div>
+  </section>
+
+  <!-- CANDIDATE: ASSESSMENT -->
+  <section class="screen" id="c-assessment">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+        <span class="eyebrow">Proctored · recording</span><span class="timer" id="sessTimer">00:00</span>
+      </div>
+      <div class="qnav" id="qnav"></div>
+      <div class="prompt-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span class="tag" id="qTag">Question 1</span><button class="btn ghost sm" id="playQ">▶ Read question aloud</button></div>
+        <p class="q" id="qText"></p>
+        <div class="script" id="qScript" style="display:none"></div>
+      </div>
+      <div class="qgrid">
+        <div>
+          <div class="video-box"><video id="aPreview" autoplay muted playsinline></video><div class="rec-dot" id="aRecDot"><span class="d"></span> REC <span id="aRecTime">0:00</span></div></div>
+          <div class="meter"><i id="aLvl"></i></div>
+          <div class="actions" style="margin-top:12px"><button class="btn sm" id="aRecToggle">● Record answer</button><span class="note" id="aRecStatus"></span></div>
+        </div>
+        <div>
+          <label class="lab">Your answer (live transcript)</label>
+          <div class="box" id="aTbox"><span class="ph">Press record and start speaking…</span></div>
+          <div class="monitor" style="margin-top:14px"><div class="stat"><span>🎥 Camera</span><span class="ok" id="mCam">live</span></div>
+            <div class="stat"><span>🎙️ Mic</span><span class="ok" id="mMic">active</span></div>
+            <div class="stat"><span>📸 Snapshots</span><span id="mSnap">0</span></div>
+            <div class="stat"><span>🚩 Tab-switch flags</span><span id="mFlag">0</span></div></div>
+        </div>
+      </div>
+      <div class="actions"><button class="btn ghost" id="prevQ" disabled>‹ Previous</button><div class="spacer"></div>
+        <button class="btn ghost" id="nextQ">Next ›</button><button class="btn" id="finishBtn" style="display:none">Finish &amp; submit</button></div>
+    </div>
+  </section>
+
+  <!-- CANDIDATE: SUBMITTED -->
+  <section class="screen" id="c-done">
+    <div class="card center" style="padding:40px 26px">
+      <span class="tag">Submitted</span><h1 style="margin-top:14px">Assessment submitted ✓</h1>
+      <p class="lead" style="margin:0 auto 8px">Your answers have been marked and sent to the hiring team. Your email app should have opened with the summary ready to send.</p>
+      <p class="note" style="max-width:60ch;margin:0 auto">If your email app didn't open, use the buttons below to download your results and recording, then email them to the reviewer.</p>
+      <div class="actions center" style="justify-content:center"><button class="btn ghost sm" id="dlResults">Download results</button><button class="btn ghost sm" id="dlRecording">Download recording</button></div>
     </div>
   </section>
 </div>
 
 <script>
-const API="https://api.anthropic.com/v1/messages", MODEL="claude-sonnet-4-20250514";
+/* ===== persistence: localStorage (admin browser) ===== */
+const LS={get:(k,d)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}},
+  set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}},del:k=>{try{localStorage.removeItem(k);}catch(e){}}};
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const state={id:"sm3_"+Date.now()+"_"+Math.random().toString(36).slice(2,7),
-  name:"",email:"",exp:"",eligibility:[],speaking:[],sim:[],written:{},scores:null,ts:Date.now()};
-let loggedIn=false;
-
-/* ---------- helpers (no alert/prompt — sandbox blocks them) ---------- */
-async function hash(s){
-  try{ if(crypto&&crypto.subtle){const d=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));
-    return [...new Uint8Array(d)].map(b=>b.toString(16).padStart(2,'0')).join('');}}catch(e){}
-  let h=2166136261; for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);} return 'fb'+(h>>>0).toString(16);
-}
-async function copyText(t){
-  try{await navigator.clipboard.writeText(t);return true;}catch(e){}
-  try{const ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
-    document.body.appendChild(ta);ta.select();const ok=document.execCommand('copy');ta.remove();return ok;}catch(e){return false;}
-}
-async function callClaude(messages,system,maxTokens){
-  const body={model:MODEL,max_tokens:maxTokens||1000,messages};if(system)body.system=system;
-  const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
-  const data=await r.json();
-  return (data.content||[]).map(b=>b.type==='text'?b.text:"").filter(Boolean).join("\n");
-}
-
-/* ---------- progress rail ---------- */
-const STAGES=["Welcome","About you","Spoken","Sales call","Written","Result"];
-const SCREENS=["s-welcome","s-details","s-speaking","s-sim","s-written","s-result"];
-let stageIdx=0;
-const chevSVG='<svg class="glyph" viewBox="0 0 24 24"><path d="M4 3l7 9-7 9h5l7-9-7-9z"/><path d="M11 3l7 9-7 9h5l7-9-7-9z" opacity=".55"/></svg>';
-function buildRail(){const html=STAGES.map((s,i)=>`<span class="chev">${chevSVG}<span>${s}</span></span>`+(i<STAGES.length-1?'<span class="bar"></span>':'')).join('');
-  $$('.rail').forEach(r=>r.innerHTML=html);paintRail();}
-function paintRail(){$$('.rail').forEach(r=>{[...r.querySelectorAll('.chev')].forEach((c,i)=>{c.classList.toggle('done',i<stageIdx);c.classList.toggle('active',i===stageIdx);});
-  [...r.querySelectorAll('.bar')].forEach((b,i)=>b.classList.toggle('done',i<stageIdx));});}
-function show(id){$$('.screen').forEach(s=>s.classList.remove('active'));$('#'+id).classList.add('active');
-  const i=SCREENS.indexOf(id);if(i>=0){stageIdx=i;paintRail();}window.scrollTo({top:0,behavior:'smooth'});}
-buildRail();
-
-/* ---------- navigation ---------- */
-$('#beginBtn').onclick=()=>show('s-details');
-$$('[data-back]').forEach(b=>b.onclick=()=>{const cur=SCREENS.indexOf($$('.screen').find(s=>s.classList.contains('active')).id);if(cur>0)show(SCREENS[cur-1]);});
-$('#detailsNext').onclick=()=>{
-  state.name=$('#cName').value.trim();state.email=$('#cEmail').value.trim();state.exp=$('#cExp').value;
-  state.eligibility=$$('.elig').map(c=>c.checked);
-  if(!state.name){$('#detailsMsg').textContent="Please enter your name.";return;}
-  $('#detailsMsg').textContent="";startSpeaking();
-};
-
-/* ---------- speaking stage (mandatory voice, no typing) ---------- */
-const SPK=[
- {q:"Imagine you've just picked up the phone. Greet the customer and introduce yourself the way you would on a real Stealth Mode Three call. Keep it warm and natural (about 30 seconds).",script:null},
- {q:"Now read this short product line aloud, clearly and at a natural pace:",
-  script:"\"Thanks for calling Stealth Mode Three. Our most popular package ships free within two days, comes with a thirty-day guarantee, and right now includes a complimentary upgrade. Would you like me to set that up for you today?\""}
-];
-let spkIdx=0,mediaStream=null,recog=null,recorder=null,recChunks=[],recTimer=null,recStart=0,finalText="",interimText="";
-const recorded={}; // spkIdx -> {audio:dataURL, transcript}
-
-function startSpeaking(){spkIdx=0;renderSpk();show('s-speaking');}
-function renderSpk(){
-  const t=SPK[spkIdx];
-  $('#spkTag').textContent=`Task ${spkIdx+1} of ${SPK.length}`;
-  $('#spkQ').textContent=t.q;
-  if(t.script){$('#spkScript').style.display='block';$('#spkScript').textContent=t.script;}else $('#spkScript').style.display='none';
-  finalText="";interimText="";paintTranscript();
-  const have=!!recorded[spkIdx];
-  $('#recStatus').textContent=have?"Saved. Re-record to replace it, or continue.":"";
-  updateSpkNext();
-}
-function updateSpkNext(){
-  const have=!!recorded[spkIdx];
-  $('#spkNext').disabled=!have;
-  $('#spkNext').textContent = have ? (spkIdx<SPK.length-1?'Next ›':'Continue ›') : 'Record an answer to continue ›';
-}
-function paintTranscript(){$('#tbox').innerHTML=(finalText||'')+'<span class="interim">'+(interimText||'')+'</span>'||'<span class="ph">Your words appear here as you speak…</span>';}
-
-$('#startMedia').onclick=async()=>{
-  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){return showMicWarn();}
-  try{
-    mediaStream=await navigator.mediaDevices.getUserMedia({video:true,audio:true});
-    $('#preview').srcObject=mediaStream;$('#vph').style.display='none';
-  }catch(e){
-    try{mediaStream=await navigator.mediaDevices.getUserMedia({audio:true});$('#vph').textContent="Mic on (no camera). That's fine — speak away.";}
-    catch(err){return showMicWarn();}
-  }
-  $('#recToggle').disabled=false;$('#startMedia').textContent='Mic ready';$('#startMedia').disabled=true;
-  $('#micWarn').style.display='none';setupMeter(mediaStream);
-};
-function showMicWarn(){
-  $('#micWarn').style.display='block';
-  $('#micWarn').innerHTML="This assessment needs a microphone. Your browser blocked access — this often happens inside an embedded preview. Please open the assessment <b>link in its own browser tab</b> (Chrome or Safari) and allow microphone access. This stage can't be completed by typing.";
-}
-function setupMeter(stream){try{const ac=new (window.AudioContext||window.webkitAudioContext)();const src=ac.createMediaStreamSource(stream),an=ac.createAnalyser();an.fftSize=256;src.connect(an);const data=new Uint8Array(an.frequencyBinCount);
-  (function loop(){an.getByteFrequencyData(data);const v=data.reduce((a,b)=>a+b,0)/data.length;$('#lvl').style.width=Math.min(100,v*1.6)+'%';requestAnimationFrame(loop);})();}catch(e){}}
-function startRecog(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR)return false;
-  recog=new SR();recog.continuous=true;recog.interimResults=true;recog.lang='en-US';
-  recog.onresult=e=>{interimText="";for(let i=e.resultIndex;i<e.results.length;i++){const r=e.results[i];if(r.isFinal)finalText+=r[0].transcript+" ";else interimText+=r[0].transcript;}paintTranscript();};
-  recog.onerror=()=>{};try{recog.start();return true;}catch(e){return false;}}
-function pickMime(){const c=['audio/webm;codecs=opus','audio/webm','audio/mp4'];for(const m of c){if(window.MediaRecorder&&MediaRecorder.isTypeSupported(m))return m;}return '';}
-$('#recToggle').onclick=()=>{
-  if(recorder&&recorder.state==='recording'){stopRec();return;}
-  recChunks=[];finalText="";interimText="";paintTranscript();
-  try{const audioStream=new MediaStream(mediaStream.getAudioTracks());const mt=pickMime();
-    recorder=new MediaRecorder(audioStream, mt?{mimeType:mt,audioBitsPerSecond:32000}:undefined);
-    recorder.ondataavailable=e=>{if(e.data&&e.data.size)recChunks.push(e.data);};
-    recorder.onstop=saveClip;recorder.start();}catch(e){$('#recStatus').textContent="Couldn't start recording on this browser.";return;}
-  startRecog();
-  $('#recToggle').textContent='■ Stop';$('#recDot').classList.add('on');$('#recStatus').textContent="Recording…";
-  recStart=Date.now();recTimer=setInterval(()=>{const s=Math.floor((Date.now()-recStart)/1000);
-    $('#recTime').textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
-    if(s>=75)stopRec();},400);
-};
-function stopRec(){if(recorder&&recorder.state==='recording')recorder.stop();if(recog)try{recog.stop();}catch(e){}
-  clearInterval(recTimer);$('#recDot').classList.remove('on');$('#recToggle').textContent='● Record';}
-function saveClip(){
-  const blob=new Blob(recChunks,{type:recorder.mimeType||'audio/webm'});
-  const reader=new FileReader();
-  reader.onload=()=>{recorded[spkIdx]={audio:reader.result,transcript:finalText.trim()};
-    $('#recStatus').textContent="Saved. Re-record to replace it, or continue.";updateSpkNext();};
-  reader.readAsDataURL(blob);
-}
-$('#spkNext').onclick=()=>{
-  stopRec();
-  const r=recorded[spkIdx]||{};
-  state.speaking[spkIdx]={prompt:SPK[spkIdx].q,transcript:r.transcript||"(audio recorded, transcript unavailable)",audio:r.audio||null};
-  if(spkIdx<SPK.length-1){spkIdx++;renderSpk();}else startSim();
-};
-
-/* ---------- simulation ---------- */
-const SIM_SYS=`You are roleplaying a CUSTOMER calling Stealth Mode Three, an e-commerce/retail company that sells consumer products and service packages by phone. The person you're talking to is a JOB CANDIDATE auditioning for a phone sales rep role. Behave like a realistic inbound customer so we can see whether they can sell.
-Rules:
-- Pick ONE concrete need at the start (a product for a situation, a gift, an upgrade) and stay consistent.
-- Start mildly interested but NOT ready to buy. Make the rep work: ask a question, then raise a natural objection (price, "let me think about it", competitor comparison, or fit uncertainty).
-- If the rep listens, asks good questions, and addresses your concern, gradually warm up. If they're pushy or vague, stay hesitant.
-- Only agree to buy if the rep clearly asks for the order / tries to close. Reward a real close.
-- Keep each reply SHORT and conversational — 1 to 3 sentences. Never break character. Never coach or evaluate.`;
-let simTurns=0;const SIM_MAX=6;
-function startSim(){state.sim=[];simTurns=0;$('#chat').innerHTML='';updateTurns();$('#endSim').disabled=true;
-  $('#sendRep').disabled=false;$('#repMsg').disabled=false;$('#repMsg').placeholder="Type your response to the customer…";
-  show('s-sim');
-  const open="Hi, yeah — I saw you guys online and had a couple of questions before I decide anything.";
-  addBubble('cust','Customer',open);state.sim.push({role:'assistant',content:open});}
-function addBubble(kind,who,text){const w=document.createElement('div');w.className='who'+(kind==='rep'?' rep':'');w.textContent=who;
-  const b=document.createElement('div');b.className='bubble '+kind;b.textContent=text;$('#chat').appendChild(w);$('#chat').appendChild(b);$('#chat').scrollTop=$('#chat').scrollHeight;}
-function updateTurns(){$('#turns').textContent=`Exchange ${simTurns} / ${SIM_MAX}`;}
-$('#sendRep').onclick=sendRep;
-$('#repMsg').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendRep();}});
-async function sendRep(){
-  const msg=$('#repMsg').value.trim();if(!msg)return;
-  $('#repMsg').value='';$('#sendRep').disabled=true;
-  addBubble('rep','You (Rep)',msg);state.sim.push({role:'user',content:msg});simTurns++;updateTurns();
-  $('#typing').style.display='block';
-  try{const reply=await callClaude(state.sim,SIM_SYS,400);state.sim.push({role:'assistant',content:reply});addBubble('cust','Customer',reply);}
-  catch(e){addBubble('cust','Customer',"(Sorry, bad connection — go ahead.)");}
-  $('#typing').style.display='none';
-  if(simTurns>=SIM_MAX){$('#endSim').disabled=false;$('#sendRep').disabled=true;$('#repMsg').disabled=true;$('#repMsg').placeholder="That's a wrap — end the call to continue.";}
-  else{$('#sendRep').disabled=false;if(simTurns>=2)$('#endSim').disabled=false;}
-}
-$('#endSim').onclick=()=>show('s-written');
-
-/* ---------- submit + scoring ---------- */
-$('#submitAll').onclick=()=>{state.written={email:$('#wEmail').value.trim(),chat:$('#wChat').value.trim()};show('s-result');runScoring();};
-const RUBRIC_SYS=`You are an expert sales-hiring assessor for Stealth Mode Three, hiring a REMOTE PHONE SALES & CUSTOMER SUPPORT rep. Top priorities: (1) SALES ABILITY on the phone (rapport, needs discovery, product matching, objection handling, and actually asking for and closing the order), and (2) SPOKEN CLARITY & COMPREHENSIBILITY — how easily a US customer would understand them: fluency, clear intelligible English, neutral easy-to-follow delivery. Assess clarity/intelligibility ONLY; do NOT judge or penalize national origin, ethnicity, or having an accent per se — many clear, trustworthy speakers have accents. Judge whether a customer can easily understand and trust them.
-Score each dimension 0-100. Weight overall: sales_ability 45%, spoken_clarity 30%, csr_written 15%, professionalism 10%. Verdicts: 75+ "Strong fit", 55-74 "Promising", below 55 "Not a fit".
-Reply with ONLY valid JSON, no markdown, exactly:
-{"spoken_clarity":{"score":0,"summary":""},"sales_ability":{"score":0,"summary":""},"csr_written":{"score":0,"summary":""},"professionalism":{"score":0,"summary":""},"overall_score":0,"verdict":"","strengths":["",""],"concerns":["",""],"recommendation":""}
-Keep summaries to one sentence, lists to 2-3 short items.`;
-function buildRubricInput(){
-  const spk=state.speaking.map((s,i)=>`Spoken task ${i+1}: "${s.transcript||'(no transcript)'}"`).join("\n");
-  const call=state.sim.map(m=>(m.role==='user'?'REP: ':'CUSTOMER: ')+m.content).join("\n");
-  return `CANDIDATE: ${state.name} | stated experience: ${state.exp||'n/a'}
-Eligibility (US hours, quiet workspace, English by phone, has closed sales): ${state.eligibility.map(b=>b?'yes':'no').join(', ')}
-== SPOKEN TASKS (transcripts; clarity proxy) ==
-${spk||'(none)'}
-== LIVE SALES ROLE-PLAY (rep = candidate) ==
-${call}
-== WRITTEN EMAIL ==
-${state.written.email||'(none)'}
-== WRITTEN CHAT ==
-${state.written.chat||'(none)'}
-Assess against the priorities and return the JSON.`;
-}
-async function runScoring(){
-  try{
-    const out=await callClaude([{role:'user',content:buildRubricInput()}],RUBRIC_SYS,1000);
-    const clean=out.replace(/```json|```/g,'').trim();
-    const j=JSON.parse(clean.slice(clean.indexOf('{'),clean.lastIndexOf('}')+1));
-    state.scores=j;await persist(j);renderResult(j);
-  }catch(e){
-    $('#scoringCard').innerHTML='<h2>Couldn\'t complete automated scoring</h2><p class="note">The scoring service didn\'t respond. Your responses are saved for manual review.</p>';
-    try{await persist(null);}catch(_){}
-  }
-}
-async function persist(scores){
-  const rec={id:state.id,name:state.name,email:state.email,exp:state.exp,eligibility:state.eligibility,
-    speaking:state.speaking.map(s=>({prompt:s.prompt,transcript:s.transcript,hasAudio:!!s.audio})),
-    sim:state.sim,written:state.written,scores,ts:state.ts};
-  try{await window.storage.set('sm3:cand:'+state.id,JSON.stringify(rec),true);}catch(e){}
-  // store audio clips separately (kept small via short cap + low bitrate)
-  for(let i=0;i<state.speaking.length;i++){const a=state.speaking[i].audio;
-    if(a&&a.length<4_500_000){try{await window.storage.set('sm3:audio:'+state.id+':'+i,a,true);}catch(e){}}}
-}
-function ringCss(v){const c=v>=75?'var(--pass)':v>=55?'var(--maybe)':'var(--fail)';return `background:conic-gradient(${c} calc(${v}*1%),#EDEBF7 0)`;}
-function pillClass(verdict){return /strong/i.test(verdict)?'pass':/promising/i.test(verdict)?'maybe':'fail';}
-function ringColor(v){return v>=75?'var(--pass)':v>=55?'var(--maybe)':'var(--fail)';}
-function metric(name,obj){obj=obj||{score:0,summary:''};return `<div class="metric"><div class="head"><b>${name}</b><span class="v">${obj.score}/100</span></div><div class="track"><i style="width:${obj.score}%"></i></div><small>${obj.summary||''}</small></div>`;}
-function renderResult(j){
-  $('#scoringCard').innerHTML=`
-    <span class="eyebrow">Assessment complete</span>
-    <div class="verdict" style="margin-top:12px">
-      <div class="score-ring" style="${ringCss(j.overall_score)}"><div class="inner"><b>${j.overall_score}</b><span>OVERALL</span></div></div>
-      <div><div class="note">Recommendation</div><div class="big">${j.verdict}</div><div class="note" style="margin-top:4px">${j.recommendation||''}</div></div>
-    </div>
-    ${metric('Sales ability (priority)',j.sales_ability)}
-    ${metric('Spoken clarity &amp; comprehensibility (priority)',j.spoken_clarity)}
-    ${metric('Written / CSR quality',j.csr_written)}
-    ${metric('Professionalism &amp; fit',j.professionalism)}
-    <div class="cols">
-      <div><h3>Strengths</h3><ul class="list">${(j.strengths||[]).map(s=>`<li>${s}</li>`).join('')}</ul></div>
-      <div><h3>Watch-outs</h3><ul class="list">${(j.concerns||[]).map(s=>`<li>${s}</li>`).join('')}</ul></div>
-    </div>
-    <hr class="sep"><div class="actions"><div class="note">This result has been saved to the recruiter dashboard.</div><div class="spacer"></div><button class="btn" id="finishBtn">Finish ›</button></div>`;
-  $('#finishBtn').onclick=()=>show('s-done');
-}
-
-/* ---------- recruiter auth (on-page, no popups) ---------- */
-async function getAuth(){try{const r=await window.storage.get('sm3:config:auth',true);return r&&r.value?JSON.parse(r.value):null;}catch(e){return null;}}
-async function setAuth(user,pw){await window.storage.set('sm3:config:auth',JSON.stringify({user,hash:await hash(pw)}),true);}
-$('#recBtn').onclick=async()=>{
-  const auth=await getAuth();
-  $('#loginMsg').textContent="";$('#rPass').value="";$('#rPass2').value="";
-  if(!auth){ // first-time setup
-    $('#loginEyebrow').textContent="Recruiter setup";$('#loginTitle').textContent="Create recruiter account";
-    $('#loginSub').textContent="No account exists yet. Set a username and password — you can change the password later.";
-    $('#userWrap').style.display='';$('#pass2Wrap').style.display='';$('#passLab').textContent="Password";
-    $('#rUser').value="recruiter";$('#loginGo').textContent="Create account";$('#loginGo').dataset.mode="setup";
-  }else{
-    $('#loginEyebrow').textContent="Recruiter access";$('#loginTitle').textContent="Sign in";$('#loginSub').textContent="";
-    $('#userWrap').style.display='';$('#pass2Wrap').style.display='none';$('#passLab').textContent="Password";
-    $('#rUser').value=auth.user||"recruiter";$('#loginGo').textContent="Sign in";$('#loginGo').dataset.mode="login";
-  }
-  show('s-login');
-};
-$('#loginBack').onclick=()=>show('s-welcome');
-$('#loginGo').onclick=async()=>{
-  const mode=$('#loginGo').dataset.mode,user=$('#rUser').value.trim(),pw=$('#rPass').value;
-  if(mode==="setup"){
-    if(!user||pw.length<4){$('#loginMsg').textContent="Choose a username and a password of at least 4 characters.";return;}
-    if(pw!==$('#rPass2').value){$('#loginMsg').textContent="Passwords don't match.";return;}
-    await setAuth(user,pw);loggedIn=true;openDashboard();return;
-  }
-  const auth=await getAuth();
-  if(auth&&user===(auth.user||user)&&await hash(pw)===auth.hash){loggedIn=true;openDashboard();}
-  else $('#loginMsg').textContent="Incorrect username or password.";
-};
-function openDashboard(){const url=(location.href||'').startsWith('http')?location.href:'';$('#inviteLink').value=url;loadCandidates();show('s-recruiter');}
-$('#exitRec').onclick=()=>show('s-welcome');
-$('#refreshBtn').onclick=loadCandidates;
-$('#copyInvite').onclick=async()=>{
-  const link=$('#inviteLink').value.trim()||"[paste your assessment link]";
-  const msg=`Hi,\n\nThanks for applying to the Sales & Customer Support role at Stealth Mode Three. Please complete our short online assessment (about 15–20 minutes). You'll need a quiet space, a microphone and a camera.\n\nStart here: ${link}\n\nOpen the link in Chrome or Safari and allow microphone access when prompted.\n\nGood luck!\nStealth Mode Three Hiring Team`;
-  const ok=await copyText(msg);
-  $('#inviteMsg').textContent=ok?"Invite message copied to clipboard.":"Couldn't auto-copy — select the link field and copy manually.";
-  setTimeout(()=>{$('#inviteMsg').textContent="";},4000);
-};
-
-/* change password */
-$('#changePwBtn').onclick=()=>{$('#curPw').value="";$('#newPw').value="";$('#newPw2').value="";$('#pwMsg').textContent="";show('s-changepw');};
-$('#pwCancel').onclick=()=>show('s-recruiter');
-$('#pwSave').onclick=async()=>{
-  const auth=await getAuth();
-  if(!auth||await hash($('#curPw').value)!==auth.hash){$('#pwMsg').className="msg err";$('#pwMsg').textContent="Current password is incorrect.";return;}
-  const np=$('#newPw').value;
-  if(np.length<4){$('#pwMsg').className="msg err";$('#pwMsg').textContent="New password must be at least 4 characters.";return;}
-  if(np!==$('#newPw2').value){$('#pwMsg').className="msg err";$('#pwMsg').textContent="New passwords don't match.";return;}
-  await setAuth(auth.user,np);$('#pwMsg').className="msg ok";$('#pwMsg').textContent="Password updated.";
-  setTimeout(()=>show('s-recruiter'),900);
-};
-
-/* ---------- dashboard data ---------- */
-async function loadCandidates(){
-  const list=$('#candList');list.innerHTML='<p class="note">Loading…</p>';
-  let recs=[];
-  try{const keys=await window.storage.list('sm3:cand:',true);
-    for(const k of (keys.keys||[])){try{const r=await window.storage.get(k,true);if(r&&r.value)recs.push(JSON.parse(r.value));}catch(e){}}}catch(e){}
-  $('#candCount').textContent=recs.length?`${recs.length} candidate${recs.length>1?'s':''}`:'';
-  if(!recs.length){list.innerHTML='<p class="note">No candidates have completed the assessment yet. Share the invite link above.</p>';return;}
-  recs.sort((a,b)=>((b.scores&&b.scores.overall_score)||0)-((a.scores&&a.scores.overall_score)||0));
-  list.innerHTML=recs.map(r=>{
-    const sc=r.scores,verdict=sc?sc.verdict:'Not scored',pc=sc?pillClass(verdict):'fail';
-    const call=r.sim.map(m=>(m.role==='user'?'REP: ':'CUSTOMER: ')+m.content).join('\n');
-    const spk=r.speaking.map((s,n)=>`#${n+1}: ${s.transcript||'(none)'}`).join('\n\n');
-    return `<div class="cand" data-id="${r.id}">
-      <div class="top">
-        <div><div class="name">${esc(r.name)||'(no name)'} ${sc?`· <span style="color:${ringColor(sc.overall_score)}">${sc.overall_score}</span>`:''}</div>
-        <div class="meta">${esc(r.email)||''} · ${new Date(r.ts).toLocaleString()}</div></div>
-        <span class="pill ${pc}">${verdict}</span>
-      </div>
-      <div class="detail">
-        ${sc?`<div class="kv"><b>Sales:</b> ${sc.sales_ability.score} — ${esc(sc.sales_ability.summary)}</div>
-        <div class="kv"><b>Spoken clarity:</b> ${sc.spoken_clarity.score} — ${esc(sc.spoken_clarity.summary)}</div>
-        <div class="kv"><b>Written/CSR:</b> ${sc.csr_written.score} — ${esc(sc.csr_written.summary)}</div>
-        <div class="kv"><b>Professionalism:</b> ${sc.professionalism.score} — ${esc(sc.professionalism.summary)}</div>
-        <div class="kv"><b>Recommendation:</b> ${esc(sc.recommendation||'')}</div>`:'<div class="kv">Automated scoring not completed.</div>'}
-        <div class="kv"><b>Experience:</b> ${esc(r.exp)||'n/a'} · <b>Eligibility:</b> ${r.eligibility.map(b=>b?'✓':'✗').join(' ')}</div>
-        <div class="kv"><b>Voice recordings</b> <span class="note">(listen to assess accent/clarity)</span><div class="audio-slot" data-id="${r.id}" data-n="${r.speaking.length}"></div></div>
-        <div class="kv"><b>Spoken transcripts</b><div class="mono-block">${esc(spk)||'(none)'}</div></div>
-        <div class="kv"><b>Sales call transcript</b><div class="mono-block">${esc(call)}</div></div>
-        <div class="kv"><b>Email reply</b><div class="mono-block">${esc(r.written.email)||'(none)'}</div></div>
-        <div class="kv"><b>Chat reply</b><div class="mono-block">${esc(r.written.chat)||'(none)'}</div></div>
-      </div></div>`;
-  }).join('');
-  $$('#candList .cand .top').forEach(t=>t.onclick=function(){
-    const card=this.parentNode;card.classList.toggle('open');
-    if(card.classList.contains('open')){const slot=card.querySelector('.audio-slot');if(slot&&!slot.dataset.loaded)loadAudio(slot);}
-  });
-}
+async function sha(s){try{if(crypto&&crypto.subtle){const d=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return [...new Uint8Array(d)].map(b=>b.toString(16).padStart(2,'0')).join('');}}catch(e){}let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return 'fb'+(h>>>0).toString(16);}
+function show(id){$$('.screen').forEach(s=>s.classList.remove('active'));$('#'+id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
 function esc(s){return (s==null?'':String(s)).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
-async function loadAudio(slot){
-  slot.dataset.loaded="1";const id=slot.dataset.id,n=+slot.dataset.n;let any=false;
-  for(let i=0;i<n;i++){try{const r=await window.storage.get('sm3:audio:'+id+':'+i,true);
-    if(r&&r.value){any=true;const lab=document.createElement('div');lab.className='note';lab.textContent='Task '+(i+1);
-      const au=document.createElement('audio');au.controls=true;au.src=r.value;slot.appendChild(lab);slot.appendChild(au);}}catch(e){}}
-  if(!any)slot.innerHTML='<span class="note">No audio stored (candidate may have used an unsupported browser).</span>';
+function b64e(o){return btoa(unescape(encodeURIComponent(JSON.stringify(o))));}
+function b64d(s){try{return JSON.parse(decodeURIComponent(escape(atob(s))));}catch(e){return null;}}
+
+/* ===== the oral assessment (I define questions + marking rubric) ===== */
+const QUESTIONS=[
+ {id:"intro",cat:"clarity",title:"Phone greeting",
+  prompt:"Imagine you've just answered an incoming call. Greet the customer and introduce yourself the way you would on a real call for our company. Keep it warm and natural.",
+  ideal:35,min:12,
+  points:[{label:"A clear greeting",terms:["hello","hi ","good morning","good afternoon","thanks for calling","thank you for calling","welcome"]},
+          {label:"States their name",terms:["my name","this is","i'm ","i am ","speaking"]},
+          {label:"Names the company",terms:["stealth","mode three"]},
+          {label:"Offers to help",terms:["how can i help","how may i help","assist","help you","what can i do","here to help"]}]},
+ {id:"sell",cat:"sales",title:"Make the sale",
+  prompt:"A customer likes our most popular package but says it's a bit expensive. In your own words, persuade them it's worth it and try to close the sale today.",
+  ideal:70,min:25,
+  points:[{label:"Acknowledges the price concern",terms:["understand","i hear you","makes sense","get that","i know","fair","valid","appreciate"]},
+          {label:"Highlights value or benefits",terms:["benefit","value","quality","guarantee","free","includes","save","worth","best","reliable","warranty"]},
+          {label:"Creates urgency or an offer",terms:["today","right now","currently","limited","upgrade","deal","offer","this week","while"]},
+          {label:"Asks for the order (closes)",terms:["set that up","place the order","go ahead","get you started","shall i","sign you up","process your order","would you like me to","get this ordered"]}]},
+ {id:"objection",cat:"sales",title:"Handle the objection",
+  prompt:"A customer says: \"I need to think about it.\" Respond the way you would on the call to keep the conversation moving.",
+  ideal:55,min:20,
+  points:[{label:"Respects their position",terms:["of course","understand","no problem","take your time","sure","absolutely","completely"]},
+          {label:"Uncovers the real concern",terms:["what's holding","any questions","is it the price","what would help","may i ask","concern","hesitant","what's making","anything specific"]},
+          {label:"Reassures / lowers risk",terms:["guarantee","risk-free","return","refund","try","no obligation","money back","cancel anytime"]},
+          {label:"Suggests a next step or soft close",terms:["follow up","reserve","hold","get started","today","while we're","i can","let me"]}]},
+ {id:"upset",cat:"service",title:"Calm an upset customer",
+  prompt:"A customer calls in angry because their order is late and they needed it for an event. Walk me through, out loud, how you'd handle that call.",
+  ideal:70,min:25,
+  points:[{label:"Empathizes / apologizes",terms:["sorry","apologize","apologise","understand","frustrating","i hear you","i get it"]},
+          {label:"Takes ownership",terms:["i'll","let me","right away","personally","take care of","look into","i will","make this right"]},
+          {label:"Offers a concrete solution",terms:["refund","replace","expedite","track","resend","resolve","fix","reship","discount","credit","solution"]},
+          {label:"Reassures / follows up",terms:["update","follow up","keep you posted","priority","make sure","stay on","check back"]}]},
+ {id:"discovery",cat:"service",title:"Understand the customer",
+  prompt:"Before recommending a product, how do you figure out what a customer actually needs? Describe your approach out loud.",
+  ideal:60,min:20,
+  points:[{label:"Asks open questions",terms:["ask","question","what are you looking","tell me","find out","what do you","looking for"]},
+          {label:"Listens to the customer",terms:["listen","hear them","let them","understand","pay attention"]},
+          {label:"Clarifies the use case or budget",terms:["use it for","situation","budget","how often","who is it for","purpose","needs","trying to"]},
+          {label:"Confirms before recommending",terms:["confirm","to make sure","so you're saying","recap","summarize","just to check","make sure i"]}]},
+ {id:"readaloud",cat:"clarity",title:"Read aloud (clarity)",
+  prompt:"Read the following line aloud, clearly and at a natural pace, as if to a customer:",
+  script:"Thanks for calling Stealth Mode Three. Our most popular package ships free within two days, comes with a thirty day guarantee, and right now includes a complimentary upgrade. Would you like me to set that up for you today?",
+  ideal:42,min:25,points:[]}
+];
+const CAT_LABEL={sales:"Sales ability",service:"Customer handling",clarity:"Spoken clarity"};
+const CAT_WEIGHT={sales:0.45,service:0.25,clarity:0.30};
+
+/* ===== auto-marking (pure client-side) ===== */
+function norm(t){return (" "+(t||"").toLowerCase()+" ").replace(/[^a-z0-9'\s]/g," ").replace(/\s+/g," ");}
+function hasTerm(t,term){term=term.toLowerCase().trim();if(term.includes(" "))return t.includes(term);
+  return new RegExp("(^|\\s)"+term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+"(\\s|$)").test(t);}
+function readAccuracy(script,transcript){const stop=new Set(["the","a","an","and","or","to","for","of","you","your","with","that","is","it","in","on"]);
+  const toks=s=>norm(s).split(" ").filter(w=>w.length>2&&!stop.has(w));
+  const sset=[...new Set(toks(script))];if(!sset.length)return 0;const tset=new Set(toks(transcript));
+  return sset.filter(w=>tset.has(w)).length/sset.length;}
+function markOne(q,ans){
+  const t=norm(ans.transcript);const words=t.trim()?t.trim().split(" ").length:0;
+  const lengthScore=words>=q.ideal?1:words>=q.min?0.6+0.4*((words-q.min)/(q.ideal-q.min)):words/Math.max(1,q.min)*0.6;
+  let hits=[],coverage=0;
+  if(q.points.length){q.points.forEach(p=>{const hit=p.terms.some(term=>hasTerm(t,term));hits.push({label:p.label,hit});});
+    coverage=hits.filter(h=>h.hit).length/q.points.length;}
+  let score;
+  if(q.cat==="clarity"&&q.script){const acc=readAccuracy(q.script,ans.transcript);
+    score=Math.round(100*(0.7*acc+0.3*Math.min(1,lengthScore)));ans._acc=acc;}
+  else if(q.cat==="clarity"){score=Math.round(100*(0.55*coverage+0.45*Math.min(1,lengthScore)));}
+  else{score=Math.round(100*(0.66*coverage+0.34*Math.min(1,lengthScore)));}
+  score=Math.max(0,Math.min(100,score));
+  return {score,coverage:Math.round(coverage*100),words,hits};
 }
+function markAll(answers){
+  const per=QUESTIONS.map((q,i)=>({q,res:markOne(q,answers[i]||{transcript:""}),transcript:(answers[i]||{}).transcript||""}));
+  const cats={};Object.keys(CAT_LABEL).forEach(c=>cats[c]={sum:0,n:0});
+  per.forEach(p=>{cats[p.q.cat].sum+=p.res.score;cats[p.q.cat].n++;});
+  const catScores={};Object.keys(cats).forEach(c=>catScores[c]=cats[c].n?Math.round(cats[c].sum/cats[c].n):0);
+  let overall=0,wsum=0;Object.keys(catScores).forEach(c=>{if(cats[c].n){overall+=catScores[c]*CAT_WEIGHT[c];wsum+=CAT_WEIGHT[c];}});
+  overall=wsum?Math.round(overall/wsum):0;
+  const verdict=overall>=72?"Strong fit":overall>=52?"Promising":"Not a fit";
+  return {per,catScores,overall,verdict};
+}
+
+/* ===== ADMIN ===== */
+function adminAcct(){return LS.get('sm3o_admin',null);}
+function settings(){return LS.get('sm3o_settings',{company:"Stealth Mode Three",email:""});}
+async function bootAdmin(){
+  $('#signOut').style.display='';
+  const a=adminAcct();
+  if(!a){show('a-setup');return;}
+  if(LS.get('sm3o_session',false)){enterDash();}else{show('a-login');}
+}
+$('#signOut').onclick=()=>{LS.set('sm3o_session',false);location.hash='';location.search='';location.reload();};
+$('#suGo').onclick=async()=>{
+  const company=$('#suCompany').value.trim(),email=$('#suEmail').value.trim(),p=$('#suPass').value;
+  if(!company||!/.+@.+\..+/.test(email)){$('#suMsg').textContent="Enter a company name and a valid results email.";return;}
+  if(p.length<6){$('#suMsg').textContent="Password must be at least 6 characters.";return;}
+  if(p!==$('#suPass2').value){$('#suMsg').textContent="Passwords don't match.";return;}
+  LS.set('sm3o_admin',{hash:await sha(p)});LS.set('sm3o_settings',{company,email});LS.set('sm3o_session',true);enterDash();
+};
+$('#liGo').onclick=async()=>{const a=adminAcct();if(a&&await sha($('#liPass').value)===a.hash){LS.set('sm3o_session',true);enterDash();}else{$('#liMsg').textContent="Incorrect password.";}};
+function enterDash(){const s=settings();$('#stCompany').value=s.company;$('#stEmail').value=s.email;renderRoster();show('a-dash');}
+$('#settingsToggle').onclick=()=>{const p=$('#settingsPanel');p.style.display=p.style.display==='none'?'block':'none';};
+$('#saveSettings').onclick=()=>{LS.set('sm3o_settings',{company:$('#stCompany').value.trim(),email:$('#stEmail').value.trim()});$('#stMsg').textContent="Saved.";setTimeout(()=>$('#stMsg').textContent="",2500);};
+$('#genLink').onclick=()=>{
+  const name=$('#invName').value.trim(),email=$('#invEmail').value.trim(),s=settings();
+  if(!name){$('#genMsg').className="msg err";$('#genMsg').textContent="Enter the candidate's name.";$('#genOut').style.display='block';return;}
+  const rid='c_'+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+  const payload=b64e({n:name,e:email,c:s.company,re:s.email,rid});
+  const url=location.origin+location.pathname+'#invite='+payload;
+  const roster=LS.get('sm3o_roster',[]);roster.push({rid,name,email,invitedAt:Date.now(),status:'Invited',url});LS.set('sm3o_roster',roster);
+  $('#genUrl').value=url;$('#genOut').style.display='block';$('#genMsg').className="msg ok";$('#genMsg').textContent="Link generated and added to the roster below.";
+  $('#invName').value='';$('#invEmail').value='';renderRoster();
+};
+$('#copyUrl').onclick=async()=>{try{await navigator.clipboard.writeText($('#genUrl').value);$('#genMsg').textContent="Link copied.";}catch(e){$('#genUrl').select();$('#genMsg').textContent="Select the field and copy.";}};
+$('#emailCand').onclick=()=>{const url=$('#genUrl').value,s=settings();
+  const body=`Hi,\n\nThanks for applying to ${s.company}. Please complete this short spoken assessment (about 12–15 minutes). You'll need a quiet space, a camera and a microphone, and Chrome/Edge/Safari.\n\nStart here: ${url}\n\nGood luck!\n${s.company} Hiring Team`;
+  location.href=`mailto:?subject=${encodeURIComponent('Your '+s.company+' assessment')}&body=${encodeURIComponent(body)}`;};
+
+function ringColor(v){return v>=72?'var(--pass)':v>=52?'var(--maybe)':'var(--fail)';}
+function pillClass(v){return /strong/i.test(v)?'pass':/promising/i.test(v)?'maybe':'fail';}
+function renderRoster(){
+  const roster=LS.get('sm3o_roster',[]).slice().reverse();
+  $('#rosterCount').textContent=roster.length?`${roster.length} candidate${roster.length>1?'s':''}`:'';
+  const wrap=$('#rosterWrap');
+  if(!roster.length){wrap.innerHTML='<p class="note">No candidates yet. Invite someone above to get started.</p>';return;}
+  wrap.innerHTML=roster.map((r,i)=>{
+    const res=r.result;const stPill=res?`<span class="pill ${pillClass(res.verdict)}">${res.verdict} · ${res.overall}</span>`:`<span class="pill wait">${r.status}</span>`;
+    let detail='';
+    if(res){detail=`<div class="detail">
+      <div class="row">${Object.keys(res.catScores).map(c=>`<div><div class="note">${CAT_LABEL[c]}</div><b style="font-family:var(--disp);font-size:18px;color:${ringColor(res.catScores[c])}">${res.catScores[c]}</b></div>`).join('')}</div>
+      ${res.per.map((p,qi)=>`<div style="margin-top:12px"><div style="display:flex;justify-content:space-between"><b style="font-family:var(--disp);font-size:14px">Q${qi+1}. ${esc(p.q.title)}</b><span class="note">${p.res.score}/100</span></div>
+        <div class="scorebar"><i style="width:${p.res.score}%;background:${ringColor(p.res.score)}"></i></div>
+        ${p.res.hits.map(h=>`<div class="kpt ${h.hit?'hit':'miss'}">${h.hit?'✓':'○'} ${esc(h.label)}</div>`).join('')}
+        <div class="mono-block">${esc(p.transcript)||'(no answer captured)'}</div></div>`).join('')}
+      <div class="note" style="margin-top:10px">Integrity: ${res.flags||0} tab-switch flag(s), ${res.snaps||0} snapshots · submitted ${new Date(res.submittedAt).toLocaleString()}</div>
+      </div>`;}
+    return `<div class="cand" data-i="${i}"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer" class="rtop">
+      <div><b style="font-family:var(--disp)">${esc(r.name)}</b> <span class="note">${esc(r.email)||''}</span><div class="note">Invited ${new Date(r.invitedAt).toLocaleDateString()}</div></div>
+      <div style="display:flex;gap:8px;align-items:center">${stPill}<button class="btn ghost sm" data-copy="${i}">Copy link</button></div></div>${detail}</div>`;
+  }).join('');
+  $$('#rosterWrap .rtop').forEach(t=>t.onclick=function(e){if(e.target.dataset.copy!==undefined)return;this.parentNode.classList.toggle('open');});
+  $$('#rosterWrap [data-copy]').forEach(b=>b.onclick=async()=>{const r=roster[+b.dataset.copy];try{await navigator.clipboard.writeText(r.url);b.textContent="Copied";setTimeout(()=>b.textContent="Copy link",1500);}catch(e){}});
+}
+
+/* ===== CANDIDATE ===== */
+let invite=null,stream=null,sessRec=null,sessChunks=[],sessStart=0,sessTimer=null,snaps=0,flags=0;
+let qi=0,answers=[],recog=null,qRec=null,qChunks=[],qStart=0,qTimer=null,finalText="",interimText="";
+function startCandidate(inv){invite=inv;$('#cwName').textContent=inv.n||'there';$('#cwCompany').textContent=inv.c||'Stealth Mode Three';answers=QUESTIONS.map(()=>({transcript:""}));show('c-welcome');}
+$('#toSysCheck').onclick=()=>show('c-syscheck');
+function meter(stream,el){try{const ac=new (window.AudioContext||window.webkitAudioContext)();const src=ac.createMediaStreamSource(stream),an=ac.createAnalyser();an.fftSize=256;src.connect(an);const d=new Uint8Array(an.frequencyBinCount);(function loop(){an.getByteFrequencyData(d);el.style.width=Math.min(100,(d.reduce((a,b)=>a+b,0)/d.length)*1.6)+'%';requestAnimationFrame(loop);})();}catch(e){}}
+let camOn=false,micOn=false;
+function syncStart(){const ok=camOn&&micOn;$('#startAssessment').disabled=!ok;$('#startHint').textContent=ok?"Everything connected — you're ready.":"Waiting for camera and microphone.";}
+async function ensureStream(){if(!stream){if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia)throw new Error('unsupported');stream=await navigator.mediaDevices.getUserMedia({video:true,audio:true});}return stream;}
+$('#enableCam').onclick=async()=>{try{await ensureStream();$('#scPreview').srcObject=stream;$('#scPh').style.display='none';camOn=true;$('#camState').innerHTML='<span class="ok">✓ Camera connected</span>';meter(stream,$('#scLvl'));syncStart();}catch(e){scWarn();}};
+$('#enableMic').onclick=async()=>{try{await ensureStream();micOn=stream.getAudioTracks().length>0;$('#micState').innerHTML='<span class="ok">✓ Microphone connected</span>';syncStart();}catch(e){scWarn();}};
+function scWarn(){$('#scWarn').style.display='block';$('#scWarn').innerHTML="Your browser blocked camera/microphone access. This often happens inside an embedded preview — open the assessment <b>link in its own browser tab</b> (Chrome, Edge or Safari) and allow access. The assessment can't run without them.";}
+$('#startAssessment').onclick=()=>{
+  $('#aPreview').srcObject=stream;
+  try{const mt=['video/webm;codecs=vp8,opus','video/webm'].find(m=>window.MediaRecorder&&MediaRecorder.isTypeSupported(m));sessRec=new MediaRecorder(stream,mt?{mimeType:mt}:undefined);sessRec.ondataavailable=e=>{if(e.data&&e.data.size)sessChunks.push(e.data);};sessRec.start();}catch(e){}
+  sessStart=Date.now();sessTimer=setInterval(()=>{const s=Math.floor((Date.now()-sessStart)/1000);$('#sessTimer').textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');},500);
+  setInterval(()=>{snaps++;$('#mSnap').textContent=snaps;},20000);
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){flags++;$('#mFlag').textContent=flags;}});
+  meter(stream,$('#aLvl'));qi=0;renderQ();show('c-assessment');
+};
+function buildNav(){$('#qnav').innerHTML=QUESTIONS.map((q,i)=>`<div class="qdot ${i===qi?'cur':''} ${answers[i].transcript?'done':''}">${i+1}</div>`).join('');}
+function renderQ(){const q=QUESTIONS[qi];buildNav();
+  $('#qTag').textContent=`Question ${qi+1} of ${QUESTIONS.length} · ${q.title}`;$('#qText').textContent=q.prompt;
+  if(q.script){$('#qScript').style.display='block';$('#qScript').textContent='“'+q.script+'”';}else $('#qScript').style.display='none';
+  finalText=answers[qi].transcript||"";interimText="";paintT();
+  $('#aRecStatus').textContent=answers[qi].transcript?"Answer saved. Re-record to replace it.":"";
+  $('#prevQ').disabled=qi===0;$('#nextQ').style.display=qi<QUESTIONS.length-1?'inline-flex':'none';$('#finishBtn').style.display=qi===QUESTIONS.length-1?'inline-flex':'none';
+}
+function paintT(){$('#aTbox').innerHTML=(finalText||'')+'<span class="interim">'+(interimText||'')+'</span>'||'<span class="ph">Press record and start speaking…</span>';}
+$('#playQ').onclick=()=>{try{const q=QUESTIONS[qi];const u=new SpeechSynthesisUtterance((q.script?q.prompt+' '+q.script:q.prompt));u.lang='en-US';u.rate=.98;speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}};
+function startRecog(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR)return;recog=new SR();recog.continuous=true;recog.interimResults=true;recog.lang='en-US';recog.onresult=e=>{interimText="";for(let i=e.resultIndex;i<e.results.length;i++){const r=e.results[i];if(r.isFinal)finalText+=r[0].transcript+" ";else interimText+=r[0].transcript;}paintT();};recog.onerror=()=>{};try{recog.start();}catch(e){}}
+$('#aRecToggle').onclick=()=>{
+  if(qRec&&qRec.state==='recording'){stopQ();return;}
+  finalText="";interimText="";paintT();qChunks=[];
+  try{const as=new MediaStream(stream.getAudioTracks());const mt=['audio/webm;codecs=opus','audio/webm'].find(m=>window.MediaRecorder&&MediaRecorder.isTypeSupported(m));qRec=new MediaRecorder(as,mt?{mimeType:mt,audioBitsPerSecond:32000}:undefined);qRec.ondataavailable=e=>{if(e.data&&e.data.size)qChunks.push(e.data);};qRec.onstop=saveQ;qRec.start();}catch(e){}
+  startRecog();$('#aRecToggle').textContent='■ Stop';$('#aRecDot').classList.add('on');$('#aRecStatus').textContent="Recording…";
+  qStart=Date.now();qTimer=setInterval(()=>{const s=Math.floor((Date.now()-qStart)/1000);$('#aRecTime').textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0');if(s>=90)stopQ();},400);
+};
+function stopQ(){if(qRec&&qRec.state==='recording')qRec.stop();if(recog)try{recog.stop();}catch(e){}clearInterval(qTimer);$('#aRecDot').classList.remove('on');$('#aRecToggle').textContent='● Record answer';}
+function saveQ(){answers[qi].transcript=finalText.trim();$('#aRecStatus').textContent=answers[qi].transcript?"Answer saved. Re-record to replace it.":"No speech detected — try again.";buildNav();}
+$('#prevQ').onclick=()=>{stopQ();if(qi>0){qi--;renderQ();}};
+$('#nextQ').onclick=()=>{stopQ();if(qi<QUESTIONS.length-1){qi++;renderQ();}};
+$('#finishBtn').onclick=submitAssessment;
+
+let lastResult=null;
+function submitAssessment(){
+  stopQ();if(sessRec&&sessRec.state==='recording')sessRec.stop();clearInterval(sessTimer);
+  const marks=markAll(answers);
+  const result={rid:invite.rid,name:invite.n,email:invite.e,company:invite.c,
+    overall:marks.overall,verdict:marks.verdict,catScores:marks.catScores,
+    per:marks.per.map((p,i)=>({title:p.q.title,score:p.res.score,hits:p.res.hits,transcript:p.transcript})),
+    flags,snaps,submittedAt:Date.now()};
+  lastResult=result;
+  // update roster if same browser
+  const roster=LS.get('sm3o_roster',[]);const idx=roster.findIndex(r=>r.rid===invite.rid);
+  if(idx>=0){roster[idx].status='Submitted';roster[idx].result=result;LS.set('sm3o_roster',roster);}
+  // email summary to reviewer
+  if(invite.re){const lines=result.per.map((p,i)=>`Q${i+1} ${p.title}: ${p.score}/100`).join('\n');
+    const body=`Candidate: ${result.name} (${result.email||'no email'})\nOverall: ${result.overall}/100 — ${result.verdict}\n`+
+      Object.keys(result.catScores).map(c=>`${CAT_LABEL[c]}: ${result.catScores[c]}/100`).join('\n')+
+      `\n\nPer question:\n${lines}\n\nIntegrity: ${flags} tab-switch flag(s).\n\nFull transcripts and recording were offered to the candidate to attach. Open the dashboard on this browser to see the full breakdown.`;
+    setTimeout(()=>{location.href=`mailto:${encodeURIComponent(invite.re)}?subject=${encodeURIComponent('Assessment result — '+result.name)}&body=${encodeURIComponent(body)}`;},400);}
+  show('c-done');
+}
+$('#dlResults').onclick=()=>{if(!lastResult)return;const blob=new Blob([JSON.stringify(lastResult,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=(lastResult.name||'candidate').replace(/\s+/g,'_')+'_assessment.json';a.click();};
+$('#dlRecording').onclick=()=>{if(!sessChunks.length){alert&&0;return;}const blob=new Blob(sessChunks,{type:sessRec?sessRec.mimeType:'video/webm'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=(invite&&invite.n||'candidate').replace(/\s+/g,'_')+'_recording.webm';a.click();};
+
+/* ===== boot / routing ===== */
+(function(){
+  const params=new URLSearchParams(location.search);
+  if(params.has('reset')){['sm3o_admin','sm3o_settings','sm3o_session','sm3o_roster'].forEach(LS.del);location.href=location.origin+location.pathname;return;}
+  const h=location.hash;
+  if(h.startsWith('#invite=')){const inv=b64d(h.slice(8));if(inv){startCandidate(inv);return;}}
+  bootAdmin();
+})();
 </script>
 
